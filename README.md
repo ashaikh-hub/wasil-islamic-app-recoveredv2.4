@@ -1,4 +1,4 @@
-# Wasil Islamic App — recovered full backup (2026-10-26) — PARTIAL, NOT COMPLETE
+# Wasil Islamic App — recovered full backup (2026-10-26) — images included (see MISSING)
 
 ## Recovery version and source
 - Source artifact: https://claude.ai/artifact/6cU6DPEywb6hQc1ne5zaZH (title "Wasil – recovery app")
@@ -11,7 +11,8 @@
 - app/hadith/         Hadith data: 3 bundles + 3 JSON books (Sahih Muslim-style "hm" data present in bundles)
 - app/quran/          Quran Arabic text and metadata (quran-ar.js, quran-meta.js, quran-state.js)
 - app/source/         EARLIER working copies of screen sources (stale; see NOTE-STALE-WORKING-COPIES.txt)
-- app/assets-map/     original -> recovered asset ID mappings (155 image copies + 5 runtime/data/Hadith files)
+- app/assets/images/  all 155 recovered image assets (exported byte-for-byte, checksums in SHA256SUMS.txt)
+- app/assets-map/     original -> recovered asset ID mappings, and asset-file-manifest.json linking each ID to its file
 
 ## Running the application
 The recovered page loads its runtime, data, modules and images from the hosting platform's asset store
@@ -45,10 +46,19 @@ The recovered page loads its runtime, data, modules and images from the hosting 
 - Location reverse geocoding: bigdatacloud client endpoint (no key required by the recovered code, to be confirmed on hosting).
 - No credentials, tokens, passwords, real OTP codes or real user data are included.
 
+## KNOWN DEFECT IN THE LIVE RECOVERED APP (found during backup verification)
+- The module resource (app/recovery/modules.js) contains one truncated asset reference:
+  /_blob/64a34859bc7c438647a70a4f0b7b6ca (31 characters). The correct recovered ID is
+  /_blob/64a34859bc7c438647a70a4f0b7b6ba4 (32 characters), and that image is included as app/assets/images/64a34859bc7c438647a70a4f0b7b6ba4.svg.
+- Effect: the image that uses this reference is expected to show as broken in the live app. This has NOT been fixed,
+  because the backup task forbids coding changes until verification is complete.
+- Fix (to apply later, after backup sign-off): re-upload modules.js with the corrected ID, then republish the page to reference the new module asset.
+- The backup keeps modules.js byte-for-byte as it is in the live app, so the backup matches what is deployed.
+
 ## MISSING (not claimed as backed up)
-- 155 recovered image asset BYTES: the copies exist only in the Claude artifact asset store. Their IDs are listed in
-  assets-map, but the image files themselves could not be exported into this backup from the current environment.
+- Image bytes: NOW INCLUDED (155 of 155, verified). The earlier note saying they were missing is superseded.
 - Quran audio files (none found).
 - Fonts beyond Google Fonts' hosted Amiri (not bundled).
 - Sahih al-Bukhari Arabic text (not available in any source).
+- Quran audio, Sahih al-Bukhari Arabic and the known truncated reference above are the only remaining gaps in the recovered content.
 - Canonical (non-stale) screen sources: the recovered app exists as one compiled page; the separate *.dc.html files are stale copies.
