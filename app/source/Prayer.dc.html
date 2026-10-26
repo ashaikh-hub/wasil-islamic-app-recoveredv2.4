@@ -1,0 +1,934 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Prayer times, Qibla and mosques</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Figtree:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600&family=Lora:wght@400;600&family=Merriweather:wght@400;700&family=Source+Serif+4:wght@400;600&family=Noto+Naskh+Arabic:wght@400;600&family=Scheherazade+New:wght@400;600&family=Lateef:wght@400;600&family=Noto+Nastaliq+Urdu:wght@400;600&family=Gulzar&display=swap" rel="stylesheet">
+<style>
+body{margin:0;font-family:'Figtree',system-ui,sans-serif;color:#241A4A;font-size:16px;line-height:1.35}
+*{box-sizing:border-box}
+button{font-family:inherit;font-size:16px;cursor:pointer;color:inherit}
+.ser{font-family:'Fraunces',Georgia,serif;font-weight:600;letter-spacing:-0.01em}
+.ar{font-family:'Amiri','Noto Naskh Arabic',serif}
+.ib{width:44px;height:44px;border-radius:22px;border:0;background:transparent;display:flex;align-items:center;justify-content:center;flex:none;color:#241A4A}
+.ibf{width:44px;height:44px;border-radius:22px;border:1px solid #E3D9F7;background:#fff;display:flex;align-items:center;justify-content:center;flex:none;color:#3B1C9A}
+.btn{min-height:50px;border-radius:25px;border:0;background:#5B2EC9;color:#fff;font-weight:600;width:100%;padding:0 20px}
+.btn2{min-height:50px;border-radius:25px;border:1.5px solid #5B2EC9;background:#fff;color:#4A22AB;font-weight:600;width:100%;padding:0 20px}
+.btn3{min-height:44px;border-radius:22px;border:0;background:transparent;color:#4A22AB;font-weight:600;padding:0 14px}
+.card{background:#fff;border:1px solid #E7DFF6;border-radius:20px;box-shadow:0 2px 12px rgba(91,46,201,.07)}
+.pill{display:inline-flex;align-items:center;min-height:26px;padding:0 10px;border-radius:13px;background:#EFE8FB;color:#3B1C9A;font-size:13px;font-weight:600;white-space:nowrap}
+.mut{color:#5A4E80}
+.nw{white-space:nowrap}
+.scroll{overflow-y:auto;overflow-x:hidden;scrollbar-width:none}
+.scroll::-webkit-scrollbar{display:none}
+.hs{overflow-x:auto;overflow-y:hidden;scrollbar-width:none}
+.hs::-webkit-scrollbar{display:none}
+@keyframes qshake{0%,100%{transform:translateX(0)}12%{transform:translateX(-7px) rotate(-1.5deg)}25%{transform:translateX(7px) rotate(1.5deg)}37%{transform:translateX(-6px) rotate(-1deg)}50%{transform:translateX(6px) rotate(1deg)}62%{transform:translateX(-4px)}75%{transform:translateX(4px)}87%{transform:translateX(-2px)}}
+@keyframes qring{0%{box-shadow:0 0 0 0 rgba(46,139,87,.55)}100%{box-shadow:0 0 0 26px rgba(46,139,87,0)}}
+.qdk .mut{color:#BDB4E0!important}.qdk .ser,.qdk h1.ser{color:#fff}.qdk .btn2{background:transparent!important;color:#fff!important;border-color:#9C8DE6!important}.qdk [role=dialog] .mut{color:#5A4E80!important}.qdk [role=dialog] .ser{color:#241A4A}.qdk [role=dialog] .btn2{background:#fff!important;color:#4A22AB!important;border-color:#5B2EC9!important}.qdk .card{background:#221B4A;border-color:#3A3170}.qdk .qhd h1.ser{color:#1B1445}
+@keyframes heartpop{0%{transform:scale(.3);opacity:0}25%{transform:scale(1.15);opacity:1}100%{transform:scale(1.5) translateY(-30px);opacity:0}}
+@keyframes tapglow{0%{box-shadow:0 6px 22px var(--gl),0 0 0 0 var(--gl)}70%{box-shadow:0 8px 30px var(--gl),0 0 0 16px rgba(255,255,255,0)}100%{box-shadow:0 6px 22px var(--gl),0 0 0 0 rgba(255,255,255,0)}}
+.tapGlow{animation:tapglow 2.2s ease-out infinite}
+.tapGlow:active{transform:scale(.97)}
+@media (prefers-reduced-motion:reduce){.tapGlow{animation:none}}
+.lbl{font-size:13px;font-weight:700;letter-spacing:.06em;color:#4A22AB;text-transform:uppercase}
+.row{display:flex;align-items:center;gap:10px;width:100%;min-height:56px;border:0;background:transparent;text-align:left;padding:0 14px;border-bottom:1px solid #EEE8F8}
+.sbd{position:absolute;inset:0;background:rgba(36,26,74,.45);border:0;width:100%;z-index:30}
+.sheet{position:absolute;left:0;right:0;bottom:0;background:#fff;border-radius:26px 26px 0 0;padding:10px 20px 24px;z-index:31;max-height:88%;overflow:auto;box-shadow:0 -8px 30px rgba(36,26,74,.2)}
+.grab{width:40px;height:5px;border-radius:3px;background:#D6CDEA;margin:0 auto 12px}
+.dis{background:#CFC8E0 !important;color:#5A4E80 !important}
+button:focus-visible{outline:3px solid #8E6AF0;outline-offset:2px}
+@keyframes noadsglow{0%,100%{box-shadow:0 0 0 0 rgba(255,90,31,.55),0 3px 10px rgba(230,25,125,.35);transform:scale(1)}50%{box-shadow:0 0 0 7px rgba(255,90,31,0),0 4px 16px rgba(230,25,125,.6);transform:scale(1.06)}}
+@keyframes noadsshine{0%{left:-60%}60%,100%{left:130%}}
+.noads{animation:noadsglow 1.3s ease-in-out infinite}
+.noadsShine{position:absolute;top:0;bottom:0;left:-60%;width:40%;background:linear-gradient(100deg,rgba(255,255,255,0),rgba(255,255,255,.65),rgba(255,255,255,0));transform:skewX(-20deg);animation:noadsshine 1.9s ease-in-out infinite}
+@media (prefers-reduced-motion:reduce){.noads,.noadsShine{animation:none}}
+@keyframes cgtw{0%,100%{opacity:.2}50%{opacity:1}} .cgTw{animation:cgtw 3s ease-in-out infinite} @media (prefers-reduced-motion:reduce){.cgTw{animation:none;opacity:.7}}
+@keyframes playflash{0%,100%{box-shadow:0 0 0 0 rgba(108,63,224,.55),0 6px 16px rgba(74,34,171,.35);filter:brightness(1)}50%{box-shadow:0 0 0 10px rgba(108,63,224,0),0 8px 22px rgba(108,63,224,.6);filter:brightness(1.25)}}
+.playFlash{animation:playflash 1.3s ease-in-out infinite}
+@media (prefers-reduced-motion:reduce){.playFlash{animation:none}}
+@keyframes tabflash{0%,100%{box-shadow:0 3px 8px rgba(53,37,122,.3),0 0 0 0 rgba(124,92,230,.55);filter:brightness(1)}50%{box-shadow:0 3px 14px rgba(124,92,230,.65),0 0 0 6px rgba(124,92,230,0);filter:brightness(1.35)}}
+.tabOn{animation:tabflash 1.4s ease-in-out infinite}
+@media (prefers-reduced-motion:reduce){.tabOn{animation:none}}
+@keyframes expmove{from{left:0}to{left:26px}}
+.expThumb{animation:expmove linear both;animation-timeline:--exp}
+@keyframes memfade{0%{opacity:0}4%{opacity:1}22%{opacity:1}27%{opacity:0}100%{opacity:0}}
+.memS{opacity:0;animation:memfade 20s ease-in-out infinite both}
+@keyframes memdot{0%{background:#CDBEF2;width:6px}4%,22%{background:#5B2EC9;width:18px}27%,100%{background:#CDBEF2;width:6px}}
+.memD{height:6px;width:6px;border-radius:3px;background:#CDBEF2;animation:memdot 20s ease-in-out infinite both}
+@keyframes bkflipN0{from{transform:perspective(1100px) rotateY(-80deg);opacity:.25}to{transform:perspective(1100px) rotateY(0);opacity:1}}
+@keyframes bkflipN1{from{transform:perspective(1100px) rotateY(-80deg);opacity:.25}to{transform:perspective(1100px) rotateY(0);opacity:1}}
+@keyframes bkflipP0{from{transform:perspective(1100px) rotateY(70deg);opacity:.25}to{transform:perspective(1100px) rotateY(0);opacity:1}}
+@keyframes bkflipP1{from{transform:perspective(1100px) rotateY(70deg);opacity:.25}to{transform:perspective(1100px) rotateY(0);opacity:1}}
+.bkN0{transform-origin:left center;animation:bkflipN0 .55s ease-out both}
+.bkN1{transform-origin:left center;animation:bkflipN1 .55s ease-out both}
+.bkP0{transform-origin:right center;animation:bkflipP0 .55s ease-out both}
+.bkP1{transform-origin:right center;animation:bkflipP1 .55s ease-out both}
+@keyframes flashgo{0%,100%{box-shadow:0 0 0 0 rgba(74,53,160,.55);filter:brightness(1)}50%{box-shadow:0 0 0 10px rgba(74,53,160,0);filter:brightness(1.35)}}
+.flashBtn{animation:flashgo 1.4s ease-in-out infinite}
+@media (prefers-reduced-motion:reduce){.flashBtn{animation:none}.memS,.memD{animation:none}.memS:first-child{opacity:1}}
+.im-ser{font-family:'Fraunces',Georgia,serif;font-weight:600;letter-spacing:-0.01em}
+.im-ar{font-family:'Amiri','Noto Naskh Arabic',serif;direction:rtl}
+.im-ib{width:44px;height:44px;border-radius:22px;border:0;background:transparent;display:flex;align-items:center;justify-content:center;color:#221A38;flex:none}
+.im-ibw{width:44px;height:44px;border-radius:22px;border:0;background:rgba(255,255,255,.92);display:flex;align-items:center;justify-content:center;color:#221A38;flex:none;box-shadow:0 2px 8px rgba(34,26,56,.18)}
+.im-btn{min-height:52px;border-radius:26px;border:0;background:#5B2EC9;color:#fff;font-weight:600;width:100%;padding:0 20px}
+.im-btn2{min-height:52px;border-radius:26px;border:1.5px solid #5B2EC9;background:#fff;color:#4A22AB;font-weight:600;width:100%;padding:0 20px}
+.im-btn3{min-height:44px;border-radius:22px;border:0;background:transparent;color:#4A22AB;font-weight:600;padding:0 14px}
+.im-dis{background:#CFC8E0 !important;color:#5A5272 !important;border-color:#CFC8E0 !important;cursor:not-allowed}
+.im-card{background:#fff;border:1px solid #E4DDF2;border-radius:20px;box-shadow:0 2px 12px rgba(91,46,201,.07)}
+.im-inp{width:100%;min-height:50px;border-radius:14px;border:1.5px solid #D6CDEA;background:#fff;padding:0 14px}
+.im-ta{width:100%;border-radius:14px;border:1.5px solid #D6CDEA;background:#fff;padding:12px 14px;resize:none;line-height:1.45}
+.im-lbl{font-size:14px;font-weight:600;color:#3B3158;margin:14px 0 6px;display:block}
+.im-mut{color:#5A5272}
+.im-pill{display:inline-flex;align-items:center;min-height:28px;padding:0 12px;border-radius:14px;background:#EFE8FB;color:#4A22AB;font-size:13px;font-weight:600}
+.im-sheetbd{position:absolute;inset:0;background:rgba(34,26,56,.45);border:0;width:100%;z-index:30}
+.im-sheet{position:absolute;left:0;right:0;bottom:0;background:#fff;border-radius:26px 26px 0 0;padding:10px 20px 24px;z-index:31;max-height:88%;overflow:auto;box-shadow:0 -8px 30px rgba(34,26,56,.2)}
+.im-grab{width:40px;height:5px;border-radius:3px;background:#D6CDEA;margin:0 auto 12px}
+.im-row{display:flex;align-items:center;gap:12px;min-height:52px;width:100%;border:0;background:transparent;text-align:left;padding:0;border-bottom:1px solid #EEE9F7}
+.im-clamp2{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.im-clamp3{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.im-scroll{overflow-y:auto;overflow-x:hidden;scrollbar-width:none}
+.im-scroll::-webkit-scrollbar{display:none}
+@keyframes imflick{0%,100%{transform:scale(1) translateY(0);opacity:1}50%{transform:scale(1.06,1.12) translateY(-2px);opacity:.92}}
+.im-flame{transform-origin:50% 90%;animation:imflick 2.4s ease-in-out infinite}
+@keyframes imglow{0%,100%{opacity:.55}50%{opacity:.85}}
+.im-glow{animation:imglow 3.2s ease-in-out infinite}
+.im-root{font-family:'Figtree',system-ui,sans-serif;color:#221A38;font-size:16px;line-height:1.4}
+.im-root,.im-root *{box-sizing:border-box}
+.im-root button{font-family:inherit;font-size:16px;cursor:pointer;color:inherit}
+.im-root textarea,.im-root input{font-family:inherit;font-size:16px;color:#221A38}
+.im-root a{color:#666}
+@media (prefers-reduced-motion:reduce){.im-flame,.im-glow{animation:none}}
+.im-root button:focus-visible,.im-root input:focus-visible,.im-root textarea:focus-visible{outline:3px solid #8E6AF0;outline-offset:2px}
+.im-root .im-btn{color:#fff}
+.im-root .im-btn2,.im-root .im-btn3{color:#4A22AB}
+.im-root .im-dis{color:#5A5272 !important}
+
+.im-bar{display:block;width:3px;height:14px;border-radius:2px;background:#FFD98A;transform-origin:50% 100%;animation:imbar 0.9s ease-in-out infinite}
+@keyframes imbar{0%,100%{transform:scaleY(.3)}50%{transform:scaleY(1)}}
+@media (prefers-reduced-motion:reduce){.im-bar{animation:none}}
+
+@keyframes imflash{0%,100%{box-shadow:0 0 0 0 rgba(122,77,240,.65),0 4px 12px rgba(91,46,201,.35);filter:brightness(1)}50%{box-shadow:0 0 0 8px rgba(122,77,240,0),0 6px 18px rgba(139,92,255,.7);filter:brightness(1.25)}}
+.im-addflash{animation:imflash 1.4s ease-in-out infinite}
+@media (prefers-reduced-motion:reduce){.im-addflash{animation:none}}
+
+@keyframes imfadeout{0%,75%{opacity:1}100%{opacity:0;height:0;margin:0;overflow:hidden}}
+.im-fadeout{animation:imfadeout 8s ease forwards}
+
+@keyframes wdpulse{0%{box-shadow:0 0 0 0 rgba(129,140,248,.9),0 8px 18px rgba(15,8,48,.35)}70%{box-shadow:0 0 0 18px rgba(129,140,248,0),0 8px 18px rgba(15,8,48,.35)}100%{box-shadow:0 0 0 0 rgba(129,140,248,0),0 8px 18px rgba(15,8,48,.35)}}
+@keyframes wdshine{0%{transform:translateX(-130%) skewX(-20deg)}55%,100%{transform:translateX(330%) skewX(-20deg)}}
+@keyframes wdfloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@keyframes wdflash{0%,100%{filter:brightness(1)}50%{filter:brightness(1.35)}}
+.wdb>*:last-child{margin-bottom:0!important}
+.wdb p{margin:0 0 8px}
+.wdgo{position:relative;overflow:hidden;animation:wdpulse 1.7s ease-out infinite,wdflash 1.7s ease-in-out infinite}
+.wdgo:after{content:"";position:absolute;top:0;bottom:0;left:0;width:34%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.45),transparent);animation:wdshine 2.6s ease-in-out infinite}
+.wdfl{animation:wdfloat 4s ease-in-out infinite}
+@media (prefers-reduced-motion:reduce){.wdgo,.wdgo:after,.wdfl{animation:none}}
+.qbk{width:44px;height:44px;border-radius:22px;border:0;background:#fff;color:#241A4A;display:flex;align-items:center;justify-content:center;flex:none;box-shadow:0 2px 10px rgba(36,26,74,.18)}
+.qs{position:absolute;inset:0;display:flex;flex-direction:column}
+.qhd{display:flex;align-items:center;gap:4px;padding:10px 12px 6px 8px;flex:none}
+.qrow{display:flex;align-items:center;gap:12px;width:100%;min-height:64px;border:0;border-bottom:1px solid #EEE8F8;background:transparent;text-align:left;padding:0 16px;color:#241A4A}
+.qrow .b{width:36px;height:36px;border-radius:12px;background:#EFE8FB;color:#4A22AB;font-weight:700;font-size:14px;display:flex;align-items:center;justify-content:center;flex:none}
+.qph{border:1.5px dashed #B8A9DC;border-radius:14px;padding:10px 12px;margin:6px 0;background:#F8F5FE}
+.qbar{display:block;height:10px;border-radius:5px;background:#DCD0F6;margin:8px 0}
+.cap{font-size:10px;letter-spacing:.06em;color:#6F66A0;font-weight:700;margin-bottom:6px}
+.qhd:not([style*="border-radius:32px"]):not([style*="border-radius: 32px"]){background:#fff!important;border:1px solid #E3D9F7;border-radius:32px;box-shadow:0 4px 16px rgba(46,31,120,.16);margin:10px 10px 8px;padding:4px!important;gap:2px!important;color:#241A4A}
+.qhd:not([style*="border-radius:32px"]):not([style*="border-radius: 32px"])>.qbk:first-child{background:#EEEAF9!important;box-shadow:none!important;color:#4A35A0!important}
+.qhd:not([style*="border-radius:32px"]):not([style*="border-radius: 32px"]) .qbk:not(:first-child){background:transparent!important;box-shadow:none!important;color:#4A35A0!important}
+.qhd>div:has(>h1){text-align:left!important;padding:0 2px 0 6px!important}
+.qhd>div:has(input){min-height:42px!important}
+.qhd h1{font-size:19px!important;text-align:left!important}
+.qs>div:has(>.qhd[style*="border-radius"]){padding:0!important}
+.qhd[style*="border-radius"]{margin:10px 10px 8px!important;padding:4px!important;gap:2px!important}
+@keyframes scSlide{0%,27%{transform:translateX(0)}33%,60%{transform:translateX(-25%)}66%,93%{transform:translateX(-50%)}100%{transform:translateX(-75%)}}.sceneStrip{animation:scSlide 21s ease-in-out infinite}@keyframes scD1{0%,30%{opacity:1}34%,96%{opacity:.35}100%{opacity:1}}@keyframes scD2{0%,30%{opacity:.35}34%,63%{opacity:1}67%,100%{opacity:.35}}@keyframes scD3{0%,63%{opacity:.35}67%,96%{opacity:1}100%{opacity:.35}}.scDot{width:7px;height:7px;border-radius:4px;background:#fff;opacity:.35;animation:scD1 21s infinite}.scDot.d2{animation-name:scD2}.scDot.d3{animation-name:scD3}@keyframes kbz{from{transform:scale(1)}to{transform:scale(1.1) translate(-1.5%,-1%)}}.kb{animation:kbz 16s ease-in-out infinite alternate;transform-origin:60% 40%}@media (prefers-reduced-motion:reduce){.sceneStrip,.kb,.scDot{animation:none}}.qLight{z-index:1}.qRays,.qGlow,.qGlow2{top:56%!important}.qSp{margin-top:6%}.qRays{position:absolute;left:50%;top:50%;width:560px;height:560px;margin:-280px 0 0 -280px;border-radius:50%;background:repeating-conic-gradient(from 0deg,rgba(255,226,150,.34) 0deg 5deg,rgba(255,226,150,0) 5deg 16deg);-webkit-mask-image:radial-gradient(circle,#000 0%,rgba(0,0,0,.5) 25%,transparent 55%);mask-image:radial-gradient(circle,#000 0%,rgba(0,0,0,.5) 25%,transparent 55%);animation:qSpin 40s linear infinite,qBreath 4.5s ease-in-out infinite}.qGlow{position:absolute;left:50%;top:50%;width:300px;height:220px;margin:-110px 0 0 -150px;border-radius:50%;background:radial-gradient(ellipse,rgba(255,236,180,.95) 0%,rgba(255,200,110,.55) 30%,rgba(255,180,90,0) 70%);animation:qBreath 4.5s ease-in-out infinite}.qGlow2{position:absolute;left:50%;top:50%;width:520px;height:420px;margin:-210px 0 0 -260px;border-radius:50%;background:radial-gradient(ellipse,rgba(190,150,255,.4) 0%,rgba(150,110,255,0) 70%);animation:qBreath 4.5s ease-in-out infinite reverse}.qSp{position:absolute;width:5px;height:5px;border-radius:50%;background:#FFF1C4;box-shadow:0 0 8px 2px rgba(255,226,150,.9);opacity:0;animation:qRise 4.2s ease-in infinite}@keyframes qSpin{to{transform:rotate(360deg)}}@keyframes qBreath{0%,100%{opacity:.55}50%{opacity:1}}@keyframes qRise{0%{opacity:0;transform:translateY(0) scale(.6)}20%{opacity:1}100%{opacity:0;transform:translateY(-120px) scale(1.1)}}@media (prefers-reduced-motion:reduce){.qRays,.qGlow,.qGlow2,.qSp{animation:none}.qSp{display:none}}@keyframes wdSlide{0%,28%{transform:translateX(0)}33%,61%{transform:translateX(-25%)}66%,94%{transform:translateX(-50%)}100%{transform:translateX(-75%)}}.wdStrip{animation:wdSlide 21s ease-in-out infinite}.wdDrop{position:absolute;top:-24px;width:3px;border-radius:2px;background:linear-gradient(180deg,rgba(205,232,255,0),rgba(215,238,255,.95));animation:wdFall 1.9s linear infinite;opacity:0}@keyframes wdFall{0%{transform:translateY(0);opacity:0}12%{opacity:.95}85%{opacity:.8}100%{transform:translateY(215px);opacity:0}}.wdFlow{animation:wdFlowK 1s linear infinite}@keyframes wdFlowK{to{stroke-dashoffset:-32}}.wdRip{transform-box:fill-box;transform-origin:center;animation:wdRipK 2.7s ease-out infinite;opacity:0}@keyframes wdRipK{0%{transform:scale(.25);opacity:.9}100%{transform:scale(1.35);opacity:0}}.wdMist{animation:wdMistK 3.2s ease-in-out infinite}@keyframes wdMistK{0%,100%{opacity:.45;transform:translateY(0)}50%{opacity:.9;transform:translateY(-4px)}}.wdSplash circle{animation:wdSplK 1s ease-out infinite;transform-box:fill-box}@keyframes wdSplK{0%{transform:translateY(0);opacity:1}100%{transform:translateY(-14px);opacity:0}}@media (prefers-reduced-motion:reduce){.wdStrip,.wdDrop,.wdFlow,.wdRip,.wdMist,.wdSplash circle{animation:none}.wdDrop{display:none}}.tbOrb{position:absolute;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.75),rgba(255,255,255,0) 70%);filter:blur(2px);animation:tbFloat 9s ease-in-out infinite}.tbOrb.o1{width:120px;height:120px;left:-20px;top:30px}.tbOrb.o2{width:90px;height:90px;right:-10px;top:110px;animation-duration:11s;animation-delay:-3s}.tbOrb.o3{width:70px;height:70px;left:45%;top:-20px;animation-duration:13s;animation-delay:-6s}@keyframes tbFloat{0%,100%{transform:translate(0,0) scale(1);opacity:.35}50%{transform:translate(26px,18px) scale(1.25);opacity:.7}}.tbSheen{position:absolute;top:-20%;bottom:-20%;width:46%;left:-60%;background:linear-gradient(100deg,rgba(255,255,255,0),rgba(255,255,255,.38),rgba(255,255,255,0));transform:skewX(-16deg);animation:tbSheenK 7s ease-in-out infinite}@keyframes tbSheenK{0%,55%{left:-60%}100%{left:130%}}@media (prefers-reduced-motion:reduce){.tbOrb,.tbSheen{animation:none}.tbSheen{display:none}}.qhd>div:has(>h1.tbHd){text-align:center!important;padding:0 !important}.qhd h1.tbHd{text-align:center!important}.frName::placeholder{color:rgba(255,255,255,.85)}.frTap:active .frCore{transform:scale(.9)}.frCore{transition:transform .08s ease}.fxL{position:absolute;inset:0;overflow:hidden;pointer-events:none}.fxL i{display:block}.fxSn{position:absolute;top:-6%;left:var(--l);width:var(--s);height:var(--s);border-radius:50%;background:#fff;box-shadow:0 0 4px rgba(255,255,255,.9);opacity:0;animation:fxFall var(--t) linear var(--d) infinite}@keyframes fxFall{0%{top:-6%;opacity:0;transform:translateX(0)}10%{opacity:.95}50%{transform:translateX(14px)}90%{opacity:.95}100%{top:104%;opacity:0;transform:translateX(-8px)}}.fxPt{position:absolute;top:-8%;left:var(--l);width:9px;height:13px;border-radius:70% 0 70% 0;background:var(--c);opacity:0;animation:fxPetal var(--t) linear var(--d) infinite}@keyframes fxPetal{0%{top:-8%;opacity:0;transform:translateX(0) rotate(0)}12%{opacity:.9}88%{opacity:.9}100%{top:106%;opacity:0;transform:translateX(34px) rotate(420deg)}}.fxBird{position:absolute;left:-14%;top:var(--y);animation:fxFly var(--t) linear var(--d) infinite}@keyframes fxFly{0%{left:-14%;transform:translateY(0)}50%{transform:translateY(-8px)}100%{left:112%;transform:translateY(4px)}}.fxSp{position:absolute;left:var(--l);top:var(--y);width:var(--s);height:var(--s);margin:calc(var(--s)/-2) 0 0 calc(var(--s)/-2);border-radius:50%;background:radial-gradient(circle,#fff 0%,rgba(255,255,255,.55) 35%,rgba(255,255,255,0) 70%);opacity:0;animation:fxTw 2.6s ease-in-out var(--d) infinite}.fxSp::before,.fxSp::after{content:"";position:absolute;left:50%;top:50%;background:#fff;border-radius:1px;transform:translate(-50%,-50%)}.fxSp::before{width:140%;height:1.5px}.fxSp::after{width:1.5px;height:140%}.fxSt{animation-duration:1.9s}@keyframes fxTw{0%,100%{opacity:0;transform:scale(.3)}50%{opacity:1;transform:scale(1.25)}}.fxRp{position:absolute;left:var(--l);top:var(--y);width:96px;height:24px;margin:-12px 0 0 -48px;border:2px solid rgba(255,255,255,.85);border-radius:50%;opacity:0;animation:fxRip 3.3s ease-out var(--d) infinite}@keyframes fxRip{0%{transform:scale(.2);opacity:.95}100%{transform:scale(1.7);opacity:0}}.fxCl{position:absolute;top:var(--y);left:-40%;width:var(--w);height:34px;border-radius:30px;background:rgba(255,255,255,.55);filter:blur(9px);animation:fxDrift var(--t) linear var(--d) infinite}@keyframes fxDrift{0%{left:-40%}100%{left:120%}}.fxSd{position:absolute;left:-4%;top:var(--y);width:3px;height:2px;border-radius:50%;background:rgba(255,236,190,.95);animation:fxSand var(--t) linear var(--d) infinite}@keyframes fxSand{0%{left:-4%;opacity:0;transform:translateY(0)}15%{opacity:1}100%{left:104%;opacity:0;transform:translateY(-22px)}}.fxBk{position:absolute;left:var(--l);bottom:-14%;width:var(--s);height:var(--s);border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.75),rgba(255,255,255,.15));opacity:0;animation:fxUp var(--t) ease-in var(--d) infinite}@keyframes fxUp{0%{bottom:-14%;opacity:0}20%{opacity:.9}60%{opacity:.35}80%{opacity:.9}100%{bottom:108%;opacity:0}}@media (prefers-reduced-motion:reduce){.fxL i,.fxL svg,.fxL svg *{animation:none!important}.fxSn,.fxPt,.fxBk,.fxRp,.fxSd{display:none}}.tbCtl>button{box-sizing:border-box!important;height:44px!important;min-height:44px;margin:0!important;line-height:1;white-space:nowrap}.tbCtl>button[aria-label="Previous favourite tasbih"]{width:44px;min-width:44px}.tbCtl>button[aria-label="Next favourite tasbih"]{padding:0 16px!important;justify-content:center}@keyframes qspin{to{transform:rotate(360deg)}}@keyframes qptc{0%{color:#2F6BFF}33%{color:#22A55B}66%{color:#14B8A6}100%{color:#2F6BFF}}@keyframes qptf{0%,100%{opacity:1}50%{opacity:.25}}.qPtr{color:#14B8A6;animation:qptc 1.8s linear infinite,qptf .6s ease-in-out infinite;filter:drop-shadow(0 0 6px currentColor)}@media (prefers-reduced-motion:reduce){.qPtr{animation:none;color:#14B8A6}}.cl2{white-space:normal!important;overflow:hidden;display:-webkit-box!important;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow-wrap:anywhere}</style>
+</helmet>
+
+<div style="position:relative;width:390px;height:844px;overflow:hidden;background:#F9F7FD">
+<sc-if value="{{s.namaz}}" hint-placeholder-val="{{false}}">
+<div style="position:absolute;inset:0;display:flex;flex-direction:column">
+  <div class="qhd" style="padding:12px 12px 6px"><button class="qbk" aria-label="Back to Home" onClick="{{x.back}}"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg></button><div style="flex:1;min-width:0;text-align:center"><h1 class="ser" style="margin:0;font-size:21px;line-height:1.2">Namaz Timing</h1></div><div style="display:flex;gap:2px;flex:none;align-items:center"><button class="qbk" aria-label="Calendar" onClick="{{x.goCalendar}}"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="4" y="5" width="16" height="15" rx="3"/><path d="M4 10h16M9 3v4M15 3v4"/></svg></button><button class="qbk" aria-label="Prayer settings" onClick="{{x.goSettings}}"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 7h10M18 7h2M4 17h2M10 17h10"/><circle cx="16" cy="7" r="2"/><circle cx="8" cy="17" r="2"/></svg></button></div></div>
+  <div style="padding:2px 20px 8px 20px;text-align:center"><div class="mut nw" style="font-size:14px">Karachi, Pakistan · {{n.greg}}</div><div class="mut nw" style="font-size:14px">{{n.hijri}}</div></div>
+
+  <div class="scroll" style="flex:1;padding:4px 16px 24px">
+    <sc-if value="{{n.cached}}" hint-placeholder-val="{{false}}"><div role="status" style="background:#FFF3D6;border:1px solid #EFD596;border-radius:14px;padding:10px 14px;font-size:14px;margin-bottom:10px;color:#5A3B00"><b>Cached times.</b> Last calculated today at 8:02 AM. They will refresh when you are back online.</div></sc-if>
+
+    <sc-if value="{{n.locDenied}}" hint-placeholder-val="{{false}}">
+      <div class="card" style="padding:20px;text-align:center">
+        <div class="ser" style="font-size:22px">Location permission is off</div>
+        <p class="mut" style="margin:8px 0 16px">Wasil needs your location to calculate prayer times for where you are. You can also choose a city instead.</p>
+        <button class="btn" onClick="{{x.goSettings}}">Choose a city</button>
+        <button class="btn3" onClick="{{x.toastLoc}}" style="margin-top:6px">Open device settings</button>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{n.ok}}" hint-placeholder-val="{{true}}">
+      <div style="{{n.skySt}}">
+        <sc-if value="{{n.night}}" hint-placeholder-val="{{false}}"><svg width="150" height="100" viewBox="0 0 150 100" aria-hidden="true" style="position:absolute;right:0;top:0"><circle cx="20" cy="18" r="1.5" fill="#fff" opacity=".8"/><circle cx="52" cy="42" r="1" fill="#fff" opacity=".6"/><circle cx="84" cy="14" r="1.8" fill="#fff" opacity=".9"/><circle cx="110" cy="48" r="1.2" fill="#fff" opacity=".7"/><circle cx="132" cy="22" r="1" fill="#fff" opacity=".6"/><circle cx="98" cy="76" r="1" fill="#fff" opacity=".5"/><circle cx="34" cy="70" r="1.2" fill="#fff" opacity=".5"/></svg></sc-if>
+        <div style="position:relative;display:flex;align-items:flex-start;gap:8px">
+          <div style="flex:1;min-width:0">
+            <div class="lbl" style="color:#fff;font-size:12px;opacity:.92">Next prayer</div>
+            <div class="ser nw" style="font-size:42px;line-height:1.12">{{n.name}}</div>
+            <div class="nw" style="font-size:15px">Starts <b>{{n.time}}</b></div>
+          </div>
+          <div style="text-align:right;flex:none">
+            <div style="font-size:12px;font-weight:600;opacity:.92">Starts in</div>
+            <div class="nw" style="font-size:30px;font-weight:700;line-height:36px">{{n.cd}}</div>
+          </div>
+        </div>
+        <svg viewBox="0 0 320 104" width="100%" role="img" aria-label="{{n.arcLabel}}" style="display:block;position:relative;margin-top:4px">
+          <line x1="8" y1="94" x2="312" y2="94" stroke="rgba(255,255,255,.45)" stroke-width="1.5"/>
+          <path d="M30 94 A130 74 0 0 1 290 94" pathLength="100" fill="none" stroke="rgba(255,255,255,.45)" stroke-width="3" stroke-linecap="round" stroke-dasharray="0.4 2.6"/>
+          <path d="M30 94 A130 74 0 0 1 290 94" pathLength="100" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-dasharray="{{n.arcP}} 200"/>
+          <g transform="translate({{n.mx}} {{n.my}})">
+            <circle r="{{n.gR}}" fill="rgba(255,214,107,.28)"/>
+            <circle r="{{n.sR}}" fill="#FFD66B"/>
+            <circle r="{{n.mgR}}" fill="rgba(243,238,255,.2)"/>
+            <path d="M6 -9 A11 11 0 1 0 9 6 A9 9 0 0 1 6 -9Z" fill="{{n.moonC}}"/>
+          </g>
+        </svg>
+        <div style="position:relative;display:flex;justify-content:space-between;font-size:12px;font-weight:600;padding:0 9%"><span class="nw">{{n.arcL}}</span><span class="nw">{{n.arcR}}</span></div>
+        <div style="position:relative;font-size:14px;margin-top:10px">{{n.status}}</div>
+        <sc-if value="{{n.hasVol}}" hint-placeholder-val="{{false}}"><span style="position:relative;display:inline-block;margin-top:8px;background:rgba(255,255,255,.2);color:#fff;border-radius:14px;padding:4px 10px;font-size:13px;font-weight:600;line-height:1.3">{{n.vol}}</span></sc-if>
+        <div><button onClick="{{n.remindNext}}" style="position:relative;margin-top:12px;min-height:44px;border-radius:22px;border:1.5px solid rgba(255,255,255,.75);background:rgba(255,255,255,.16);color:#fff;font-weight:600;font-size:15px;padding:0 16px;display:inline-flex;align-items:center;gap:8px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a2 2 0 0 0 3.4 0"/></svg>{{n.remindText}}</button></div>
+      </div>
+
+      <div style="display:flex;gap:6px;background:#EFE8FB;padding:4px;border-radius:24px;margin-top:14px" role="tablist">
+        <button role="tab" aria-selected="true" style="flex:1;min-height:44px;border-radius:20px;border:0;background:#fff;font-weight:600;font-size:14px;color:#3B1C9A;box-shadow:0 1px 6px rgba(91,46,201,.18)">Five Daily Prayers</button>
+        <button role="tab" aria-selected="false" onClick="{{x.goAll}}" style="flex:1;min-height:44px;border-radius:20px;border:0;background:transparent;font-weight:600;font-size:14px;color:#4A4166">All Prayers</button>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:8px;margin-top:12px">
+        <sc-for list="{{n.rows}}" as="r" hint-placeholder-count="5">
+          <div style="{{r.rowSt}}">
+            <button onClick="{{r.open}}" aria-label="{{r.aria}}" style="flex:1;min-width:0;display:flex;align-items:center;gap:12px;min-height:70px;border:0;background:transparent;text-align:left;padding:0 0 0 12px">
+              <span style="{{r.icSt}}"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="{{r.icC}}" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{r.d}}"/></svg></span>
+              <span style="flex:1;min-width:0;display:flex;flex-direction:column;gap:1px">
+                <span style="display:flex;align-items:center;gap:8px"><span style="{{r.nameSt}}">{{r.name}}</span><span class="nw" style="{{r.tagSt}}">{{r.tag}}</span></span>
+                <span class="mut" style="font-size:13px">{{r.sub}}</span>
+              </span>
+              <span class="nw" style="{{r.timeSt}}">{{r.time}}</span>
+            </button>
+            <button class="ib" aria-label="{{r.bellLabel}}" aria-pressed="{{r.bellOn}}" onClick="{{r.bell}}" style="width:40px;height:40px"><svg width="20" height="20" viewBox="0 0 24 24" fill="{{r.bellFill}}" stroke="#4A22AB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a2 2 0 0 0 3.4 0"/></svg></button>
+          </div>
+        </sc-for>
+        <div style="display:flex;align-items:center;gap:10px;min-height:50px;padding:0 14px;border-radius:16px;background:#F3EEFC"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#5A4E80" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 18h18M7 18a5 5 0 0 1 10 0M12 10V4M9 7l3-3 3 3"/></svg><span class="mut" style="font-size:14px;font-style:italic;flex:1">Sunrise · a solar event, not a prayer</span><span class="mut nw" style="font-size:14px;font-weight:600">{{n.sunrise}}</span></div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-top:16px">
+        <button onClick="{{x.goCalendar}}" style="min-height:88px;border-radius:18px;border:1px solid #E7DFF6;background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;font-size:13px;font-weight:600;color:#3B1C9A"><span style="width:38px;height:38px;border-radius:19px;background:#F1EBFD;display:flex;align-items:center;justify-content:center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#5B2EC9" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="5" width="16" height="15" rx="3"/><path d="M4 10h16M9 3v4M15 3v4"/></svg></span>Calendar</button>
+        <button onClick="{{x.goQibla}}" style="min-height:88px;border-radius:18px;border:1px solid #E7DFF6;background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;font-size:13px;font-weight:600;color:#3B1C9A"><span style="width:38px;height:38px;border-radius:19px;background:#F1EBFD;display:flex;align-items:center;justify-content:center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#5B2EC9" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 18 0 9 9 0 1 0-18 0M15.5 8.5l-2 5-5 2 2-5z"/></svg></span>Qibla</button>
+        <button onClick="{{x.goReminders}}" style="min-height:88px;border-radius:18px;border:1px solid #E7DFF6;background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;font-size:13px;font-weight:600;color:#3B1C9A"><span style="width:38px;height:38px;border-radius:19px;background:#F1EBFD;display:flex;align-items:center;justify-content:center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#5B2EC9" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a2 2 0 0 0 3.4 0"/></svg></span>Reminders</button>
+        <button onClick="{{x.goTimeline}}" style="min-height:88px;border-radius:18px;border:1px solid #E7DFF6;background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;font-size:13px;font-weight:600;color:#3B1C9A"><span style="width:38px;height:38px;border-radius:19px;background:#F1EBFD;display:flex;align-items:center;justify-content:center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#5B2EC9" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 18 0 9 9 0 1 0-18 0M12 7v5l3 2"/></svg></span>Day view</button>
+      </div>
+      <div class="mut" style="font-size:12px;text-align:center;margin-top:12px">{{n.method}} · {{n.asr}} Asr · sample times</div>
+      <div style="text-align:center;margin-top:6px"><button class="btn3" onClick="{{x.openProto}}" style="border:1px dashed #B8A9DC;font-size:14px">Prototype tools</button></div>
+    </sc-if>
+  </div>
+</div>
+</sc-if>
+
+<sc-if value="{{s.all}}" hint-placeholder-val="{{false}}">
+<div style="position:absolute;inset:0;display:flex;flex-direction:column">
+  <div class="qhd" style="padding:12px 12px 6px"><button class="qbk" aria-label="Back to Namaz" onClick="{{x.back}}"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg></button><div style="flex:1;min-width:0;text-align:center"><h1 class="ser" style="margin:0;font-size:21px;line-height:1.2">All <span style="color:#5B3FD0">Prayers</span></h1></div></div>
+  <div class="scroll" style="flex:1;padding:6px 16px 24px">
+    <div style="display:flex;gap:6px;background:#EFE8FB;padding:4px;border-radius:24px">
+      <button onClick="{{x.back}}" style="flex:1;min-height:44px;border-radius:20px;border:0;background:transparent;font-weight:600;font-size:14px;color:#4A4166">Five Daily Prayers</button>
+      <button style="flex:1;min-height:44px;border-radius:20px;border:0;background:#fff;font-weight:600;font-size:14px;color:#3B1C9A;box-shadow:0 1px 6px rgba(91,46,201,.18)">All Prayers</button>
+    </div>
+    <div class="mut" style="font-size:14px;margin:10px 4px">Chronological. Optional prayer windows can overlap, so a row is a window, not a fixed slot.</div>
+    <div class="card" style="overflow:hidden">
+      <sc-for list="{{al.rows}}" as="r" hint-placeholder-count="10">
+        <div style="{{r.rowSt}}">
+          <button onClick="{{r.open}}" aria-label="{{r.aria}}" style="flex:1;min-width:0;display:flex;align-items:center;gap:10px;min-height:68px;border:0;background:transparent;text-align:left;padding:0">
+            <span style="{{r.dot}}"></span>
+            <span style="flex:1;min-width:0"><span style="display:block;font-weight:600">{{r.name}}</span><span class="mut" style="display:block;font-size:13px">{{r.cls}} · {{r.window}}</span></span>
+            <span class="nw" style="{{r.tagSt}}">{{r.tag}}</span>
+          </button>
+          <button class="ib" aria-label="{{r.bellLabel}}" aria-pressed="{{r.bellOn}}" onClick="{{r.bell}}" style="width:40px;height:40px"><svg width="20" height="20" viewBox="0 0 24 24" fill="{{r.bellFill}}" stroke="#4A22AB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a2 2 0 0 0 3.4 0"/></svg></button>
+        </div>
+      </sc-for>
+    </div>
+    <div class="lbl" style="margin:18px 4px 6px">Restricted times</div>
+    <div class="card" style="padding:4px 14px">
+      <sc-for list="{{al.restricted}}" as="r" hint-placeholder-count="3"><div style="display:flex;gap:10px;min-height:48px;align-items:center;border-bottom:1px solid #EEE8F8"><span style="flex:1;font-size:15px">{{r.name}}</span><span class="mut nw" style="font-size:14px">{{r.window}}</span></div></sc-for>
+      <div class="mut" style="font-size:12px;padding:8px 0">Rules differ by school and are pending scholarly review.</div>
+    </div>
+  </div>
+</div>
+</sc-if>
+
+<sc-if value="{{s.detail}}" hint-placeholder-val="{{false}}">
+<div style="position:absolute;inset:0;display:flex;flex-direction:column">
+  <div class="qhd" style="padding:12px 12px 6px"><button class="qbk" aria-label="Back" onClick="{{x.back}}"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg></button><div style="flex:1;min-width:0;text-align:center"><h1 class="ser" style="margin:0;font-size:21px;line-height:1.2">Prayer <span style="color:#5B3FD0">detail</span></h1></div></div>
+  <div class="scroll" style="flex:1;padding:0 16px 24px">
+    <div style="text-align:center;padding:4px 0 14px">
+      <div class="ar" lang="ar" style="font-size:44px;line-height:1.5;color:#2A1B5E">{{dt.ar}}</div>
+      <h1 class="ser" style="margin:0;font-size:28px">{{dt.en}}</h1>
+      <span class="pill" style="margin-top:8px">{{dt.cls}}</span>
+    </div>
+    <div class="card" style="padding:4px 16px">
+      <div style="padding:10px 0;border-bottom:1px solid #EEE8F8"><div class="lbl">Window</div><div style="font-size:18px;font-weight:600">{{dt.window}}</div></div>
+      <div style="padding:10px 0;border-bottom:1px solid #EEE8F8"><div class="lbl">Recommended</div><div style="font-size:15px">{{dt.rec}}</div></div>
+      <div style="padding:10px 0"><div class="lbl">Right now</div><div style="font-size:15px">{{dt.now}}</div></div>
+    </div>
+    <div class="card" style="padding:14px 16px;margin-top:12px"><div class="lbl">About</div><div style="font-size:15px;margin-top:4px">{{dt.exp}}</div><div class="lbl" style="margin-top:12px">Rak&#39;ah</div><div style="font-size:15px;margin-top:2px">{{dt.rak}}</div><div class="mut" style="font-size:13px;margin-top:6px">Calculated by: {{dt.method}}</div></div>
+    <div class="card" style="padding:14px 16px;margin-top:12px;background:#F6F2FC;box-shadow:none"><div class="lbl">References</div><div class="mut" style="font-size:14px;margin-top:4px">[Citations will appear here once supplied by the approved scholarly content source. Rule set v1 pending review.]</div></div>
+    <div class="card" style="padding:12px 16px;margin-top:12px;display:flex;align-items:center;gap:12px"><div style="flex:1"><div style="font-weight:600">Reminder</div><div class="mut" style="font-size:13px">{{dt.remindText}}</div></div><button role="switch" aria-checked="{{dt.on}}" aria-label="Reminder for {{dt.en}}" onClick="{{dt.toggle}}" style="{{dt.trackSt}}"><span style="{{dt.knobSt}}"></span></button></div>
+    <button class="btn3" onClick="{{x.toastGuide}}" style="width:100%;margin-top:8px">Open prayer guide</button>
+  </div>
+</div>
+</sc-if>
+
+<sc-if value="{{s.calendar}}" hint-placeholder-val="{{false}}">
+<div style="position:absolute;inset:0;display:flex;flex-direction:column">
+  <div class="qhd" style="padding:12px 12px 6px"><button class="qbk" aria-label="Back to Namaz" onClick="{{x.back}}"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg></button><div style="flex:1;min-width:0;text-align:center"><h1 class="ser" style="margin:0;font-size:21px;line-height:1.2">Calendar</h1></div><div style="display:flex;gap:2px;flex:none;align-items:center"><div style="display:flex;background:#EFE8FB;border-radius:20px;padding:3px"><sc-for list="{{cl.systems}}" as="c" hint-placeholder-count="2"><button onClick="{{c.pick}}" aria-pressed="{{c.on}}" style="{{c.st}}">{{c.label}}</button></sc-for></div></div></div>
+  <sc-if value="{{cl.notConvert}}" hint-placeholder-val="{{true}}"><div style="display:flex;gap:4px;margin:8px 16px 0;background:#EFE8FB;padding:4px;border-radius:26px" role="tablist">
+    <sc-for list="{{cl.modes}}" as="m" hint-placeholder-count="3"><button role="tab" aria-selected="{{m.on}}" onClick="{{m.pick}}" style="{{m.st}}">{{m.label}}</button></sc-for>
+  </div></sc-if>
+  <div class="scroll" style="flex:1;padding:12px 16px 24px">
+    <sc-if value="{{cl.notConvert}}" hint-placeholder-val="{{true}}">
+    <button onClick="{{cl.openConv}}" aria-label="Open date converter" style="width:100%;margin-bottom:12px;border:1px solid #E3D9F7;border-radius:22px;background:linear-gradient(120deg,#F3EEFF,#E6DCFA);padding:14px 14px 14px 16px;display:flex;align-items:center;gap:12px;text-align:left;color:#241A4A">
+      <span style="flex:none;width:46px;height:46px;border-radius:23px;background:linear-gradient(160deg,#5B43C0,#2E1F78);color:#fff;display:flex;align-items:center;justify-content:center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h11l-3-3 M18 7l-3 3 M17 17H6l3 3 M6 17l3-3"/></svg></span>
+      <span style="flex:1;min-width:0"><b class="ser" style="display:block;font-size:17px">Date converter</b><span style="display:block;font-size:13px;color:#5A4E80;margin-top:1px">Gregorian to Hijri and back</span></span>
+      <span style="flex:none;background:#5B2EC9;color:#fff;font-size:13px;font-weight:700;border-radius:18px;padding:9px 14px">Convert</span>
+    </button>
+    <sc-if value="{{cl.monthView}}" hint-placeholder-val="{{true}}">
+    <div style="position:relative;border-radius:24px 24px 0 0;overflow:hidden;background:linear-gradient(160deg,#5B43C0,#2E1F78);color:#fff;padding:14px 12px 16px">
+      <svg width="170" height="170" viewBox="0 0 170 170" fill="none" stroke="rgba(255,255,255,.10)" stroke-width="1.5" aria-hidden="true" style="position:absolute;right:-40px;top:-50px;pointer-events:none"><circle cx="85" cy="85" r="80"/><circle cx="85" cy="85" r="56"/><circle cx="85" cy="85" r="32"/></svg>
+      <div style="position:relative;display:flex;align-items:center;gap:6px">
+        <button aria-label="Previous month" onClick="{{cl.prev}}" style="width:44px;height:44px;border-radius:22px;border:0;background:rgba(255,255,255,.16);color:#fff;display:flex;align-items:center;justify-content:center;flex:none;padding:0"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg></button>
+        <div style="flex:1;min-width:0;text-align:center"><div style="font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#CFC3FF">{{cl.kicker}}</div><div class="ser" style="font-size:{{cl.titleSz}}px;line-height:1.25;margin-top:2px">{{cl.title}}</div><div style="font-size:13px;color:#DCD2FF;margin-top:2px">{{cl.subtitle}}</div></div>
+        <button aria-label="Next month" onClick="{{cl.next}}" style="width:44px;height:44px;border-radius:22px;border:0;background:rgba(255,255,255,.16);color:#fff;display:flex;align-items:center;justify-content:center;flex:none;padding:0"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></button>
+      </div>
+    </div>
+    </sc-if>
+
+    <sc-if value="{{cl.monthView}}" hint-placeholder-val="{{true}}">
+      <div style="margin-top:0;border-radius:0 0 24px 24px;border:1px solid #E3D9F7;border-top:0;background:#fff;overflow:hidden;padding:12px 8px 10px;box-shadow:0 8px 20px rgba(46,31,120,.10)">
+        <div style="display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:4px;text-align:center">
+          <sc-for list="{{cl.heads}}" as="h" hint-placeholder-count="7"><div style="font-size:12px;font-weight:700;color:#8254DC">{{h.t}}</div></sc-for>
+          <sc-for list="{{cl.cells}}" as="c" hint-placeholder-count="35"><button onClick="{{c.pick}}" aria-label="{{c.aria}}" style="{{c.st}}"><span style="{{c.mainSt}}">{{c.main}}</span><span style="{{c.subSt}}">{{c.sub}}</span><span style="{{c.dotSt}}"></span></button></sc-for>
+        </div>
+        <div style="display:flex;gap:14px;justify-content:center;margin-top:10px;font-size:12px;color:#5A4E80"><span style="display:flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:4px;background:#D9A21B"></span>Islamic event</span><span style="display:flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:4px;background:#8F78E0"></span>White Days</span></div>
+      </div>
+      <div style="margin-top:12px;border-radius:20px;border:1px solid #E3D9F7;background:#fff;overflow:hidden;padding:16px">
+        <div style="font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#8254DC">Selected date</div>
+        <div class="ser" style="font-size:21px;line-height:1.25;margin-top:4px;color:#241A4A">{{cl.selMain}}</div>
+        <div style="font-size:15px;color:#4A35A0;margin-top:2px;font-weight:600">{{cl.selSub}}</div>
+        <div style="margin-top:12px;display:flex;flex-direction:column;gap:8px">
+          <sc-for list="{{cl.selEvents}}" as="e" hint-placeholder-count="1"><div style="display:flex;gap:10px;align-items:flex-start;background:{{e.bg}};border-radius:14px;padding:10px 12px"><span style="flex:none;width:10px;height:10px;border-radius:5px;background:{{e.dot}};margin-top:5px"></span><span style="flex:1;min-width:0"><b style="display:block;font-size:15px;color:#241A4A">{{e.name}}</b><span style="display:block;font-size:13px;color:#5A4E80;line-height:1.4;margin-top:1px">{{e.desc}}</span></span></div></sc-for>
+        </div>
+        <button onClick="{{cl.convertSel}}" style="margin-top:12px;min-height:44px;padding:0 16px;border-radius:22px;border:1.5px solid #CFC3EE;background:#fff;color:#4A22AB;font-weight:600">Convert this date</button>
+        <button onClick="{{cl.goToday}}" style="margin:12px 0 0 8px;min-height:44px;padding:0 16px;border-radius:22px;border:0;background:#EFE8FB;color:#4A22AB;font-weight:600">Go to today</button>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{cl.eventsView}}" hint-placeholder-val="{{false}}">
+      <div class="ser" style="margin:16px 4px 8px;font-size:18px;font-weight:700;color:#241A4A">Upcoming Islamic dates</div>
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <sc-for list="{{cl.upcoming}}" as="u" hint-placeholder-count="6"><button onClick="{{u.pick}}" aria-label="{{u.aria}}" style="width:100%;text-align:left;display:flex;align-items:center;gap:14px;border:1px solid #E3D9F7;border-radius:20px;background:#fff;padding:12px 14px;color:#241A4A"><span style="flex:none;width:54px;height:58px;border-radius:16px;background:linear-gradient(160deg,#5B43C0,#2E1F78);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center"><b class="ser" style="font-size:22px;line-height:1">{{u.day}}</b><span style="font-size:12px;opacity:.85;margin-top:2px">{{u.mon}}</span></span><span style="flex:1;min-width:0"><b style="display:block;font-size:16px">{{u.name}}</b><span style="display:block;font-size:13px;color:#5A4E80;margin-top:2px">{{u.hijri}}</span></span><span style="flex:none;background:#EFE8FB;color:#4A35A0;font-size:12px;font-weight:700;border-radius:12px;padding:5px 10px">{{u.when}}</span></button></sc-for>
+      </div>
+    </sc-if>
+    <div class="mut" style="font-size:12px;margin:12px 4px 0;line-height:1.5">{{cl.footer}}</div>
+    </sc-if>
+
+    <sc-if value="{{cl.convert}}" hint-placeholder-val="{{false}}">
+      <button onClick="{{cl.closeConv}}" aria-label="Back to calendar" style="display:flex;align-items:center;gap:6px;min-height:44px;border:0;background:transparent;color:#4A22AB;font-weight:700;font-size:15px;padding:0 4px 8px"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>Calendar</button>
+            <div style="border-radius:20px;border:1px solid #E3D9F7;background:#fff;overflow:hidden;padding:16px">
+        <div class="ser" style="font-size:20px;font-weight:700;color:#241A4A">Date converter</div>
+        <div class="mut" style="font-size:13px;margin:2px 0 12px">Convert between Gregorian and Hijri dates.</div>
+        <div style="display:flex;gap:4px;background:#EFE8FB;padding:4px;border-radius:24px"><sc-for list="{{cv.dirs}}" as="d" hint-placeholder-count="2"><button onClick="{{d.pick}}" aria-pressed="{{d.on}}" style="{{d.st}}">{{d.l}}</button></sc-for></div>
+        <div style="font-weight:600;font-size:14px;color:#4A35A0;margin:14px 0 6px">{{cv.fromLabel}}</div>
+        <div style="display:flex;flex-wrap:wrap;gap:10px"><div style="flex:1 1 28%;min-width:0;display:flex;flex-direction:column;gap:4px"><span style="font-size:12px;color:#5A4E80">Day</span><input type="number" inputmode="numeric" min="1" max="31" value="{{cv.d}}" onInput="{{cv.setD}}" aria-label="Day" style="width:100%;flex:1;min-width:0;box-sizing:border-box;min-height:48px;border:1.5px solid #CFC3EE;border-radius:14px;padding:0 12px;font-size:16px;color:#241A4A;outline:0;background:#fff;font-family:inherit"></div><div style="flex:1 1 100%;order:3;min-width:0;display:flex;flex-direction:column;gap:4px"><span style="font-size:12px;color:#5A4E80">Month</span><div style="display:flex;align-items:center;gap:4px"><button onClick="{{cv.mPrev}}" aria-label="Previous month" style="flex:none;width:44px;height:48px;border-radius:14px;border:1.5px solid #CFC3EE;background:#fff;color:#4A22AB;display:flex;align-items:center;justify-content:center;padding:0"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg></button><span style="flex:1;min-width:0;text-align:center;font-size:15px;font-weight:600;color:#241A4A;line-height:1.2">{{cv.monthName}}</span><button onClick="{{cv.mNext}}" aria-label="Next month" style="flex:none;width:44px;height:48px;border-radius:14px;border:1.5px solid #CFC3EE;background:#fff;color:#4A22AB;display:flex;align-items:center;justify-content:center;padding:0"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></button></div></div><div style="flex:1 1 55%;min-width:0;display:flex;flex-direction:column;gap:4px"><span style="font-size:12px;color:#5A4E80">Year</span><input type="number" inputmode="numeric" value="{{cv.y}}" onInput="{{cv.setY}}" aria-label="Year" style="width:100%;flex:1;min-width:0;box-sizing:border-box;min-height:48px;border:1.5px solid #CFC3EE;border-radius:14px;padding:0 12px;font-size:16px;color:#241A4A;outline:0;background:#fff;font-family:inherit"></div></div>
+        <button onClick="{{cv.today}}" style="margin-top:12px;min-height:44px;padding:0 16px;border-radius:22px;border:1.5px solid #CFC3EE;background:#fff;color:#4A22AB;font-weight:600">Use today</button>
+      </div>
+      <div style="margin-top:12px;border-radius:24px;overflow:hidden;background:linear-gradient(160deg,#5B43C0,#2E1F78);color:#fff;padding:18px 16px;position:relative;box-shadow:0 8px 20px rgba(46,31,120,.22)">
+        <svg width="150" height="150" viewBox="0 0 170 170" fill="none" stroke="rgba(255,255,255,.10)" stroke-width="1.5" aria-hidden="true" style="position:absolute;right:-30px;bottom:-50px;pointer-events:none"><circle cx="85" cy="85" r="80"/><circle cx="85" cy="85" r="56"/><circle cx="85" cy="85" r="32"/></svg>
+        <div style="position:relative;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#CFC3FF">{{cv.toLabel}}</div>
+        <sc-if value="{{cv.ok}}" hint-placeholder-val="{{true}}"><div style="position:relative"><div class="ser" style="font-size:26px;line-height:1.25;margin-top:6px">{{cv.main}}</div><div style="font-size:15px;color:#DCD2FF;margin-top:4px">{{cv.sub}}</div>
+          <div style="display:flex;gap:8px;margin-top:14px;flex-wrap:wrap"><button onClick="{{cv.swap}}" style="min-height:44px;padding:0 16px;border-radius:22px;border:0;background:#fff;color:#3B1C9A;font-weight:700">Convert back</button><sc-if value="{{cv.canOpen}}" hint-placeholder-val="{{false}}"><button onClick="{{cv.open}}" style="min-height:44px;padding:0 16px;border-radius:22px;border:1.5px solid rgba(255,255,255,.5);background:transparent;color:#fff;font-weight:700">Open in calendar</button></sc-if></div></div></sc-if>
+        <sc-if value="{{cv.bad}}" hint-placeholder-val="{{false}}"><div style="position:relative;font-size:15px;margin-top:8px;line-height:1.4">{{cv.err}}</div></sc-if>
+      </div>
+      <div class="mut" style="font-size:12px;margin:10px 4px 0;line-height:1.5">{{cv.note}}</div>
+    </sc-if>
+  </div>
+</div>
+</sc-if>
+
+<sc-if value="{{s.qibla}}" hint-placeholder-val="{{false}}">
+<div class="{{qb.rootCls}}" style="position:absolute;inset:0;display:flex;flex-direction:column;background:{{qb.bg}}">
+  <div class="qhd" style="padding:12px 12px 6px"><button class="qbk" aria-label="Back to Namaz" onClick="{{x.back}}"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg></button><div style="flex:1;min-width:0;text-align:center"><h1 class="ser" style="margin:0;font-size:21px;line-height:1.2">Qibla Direction</h1></div><button class="qbk" aria-label="Qibla settings" onClick="{{qb.openSet}}"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg></button></div>
+  <div class="scroll" style="flex:1;padding:2px 16px 18px;text-align:center">
+    <div style="display:inline-flex;align-items:center;gap:2px;max-width:100%"><div role="status" aria-live="polite" style="min-height:44px;display:inline-flex;align-items:center;gap:6px;color:#5A4E80;font-size:14px;padding:0 4px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg><span>{{qb.from}}</span></div><button onClick="{{qb.refresh}}" aria-label="{{qb.refAria}}" style="width:44px;height:44px;border:0;background:transparent;color:#5B2EC9;display:flex;align-items:center;justify-content:center;padding:0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="{{qb.refSt}}"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 4v5h-5"/></svg></button></div><sc-if value="{{qb.locNoteOn}}" hint-placeholder-val="{{false}}"><div style="font-size:12.5px;color:#9A5B00;background:#FFF6DB;border:1px solid #F0D58A;border-radius:10px;padding:8px 12px;margin:0 8px 6px;line-height:1.4">{{qb.locNote}}</div></sc-if>
+    <div class="ser" style="font-size:30px;margin-top:2px">{{qb.bearing}}° {{qb.dir}}</div>
+    <div class="mut" style="font-size:14px">{{qb.dist}} km to the Kaaba · calculated from your location</div>
+    <button onClick="{{qb.toNamaz}}" aria-label="Next prayer {{qb.nxName}} at {{qb.nxTime}}. Open prayer times" style="margin:10px auto 0;display:flex;align-items:center;gap:10px;min-height:48px;padding:0 16px;border:1px solid #DDD3F9;border-radius:24px;background:#fff;color:#2A1B5E;font-size:14px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#5B2EC9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span>Next: <b>{{qb.nxName}}</b> {{qb.nxTime}} · in {{qb.nxCd}}</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#5A4E80" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button>
+    <div style="{{qb.dialWrap}}"><div style="{{qb.shakeSt}}"><img src="{{qb.img}}" alt="Qibla compass dial" style="{{qb.imgSt}}"><sc-if value="{{qb.isAl}}" hint-placeholder-val="{{false}}"><svg class="qPtr" viewBox="0 0 1034 1027" aria-hidden="true" style="{{qb.ptSt}}"><polygon points="522,314 446,546 598,546" fill="currentColor"/></svg></sc-if><sc-if value="{{qb.isAl2}}" hint-placeholder-val="{{false}}"><svg class="qPtr" viewBox="0 0 1056 1103" aria-hidden="true" style="{{qb.ptSt}}"><polygon points="528,-3 486,108 528,153 571,108" fill="currentColor"/></svg></sc-if><sc-if value="{{qb.isAl3}}" hint-placeholder-val="{{false}}"><svg class="qPtr" viewBox="0 0 400 400" aria-hidden="true" style="{{qb.ptSt}}"><polygon points="200,26 170,110 230,110" fill="currentColor"/></svg></sc-if><svg viewBox="0 0 300 300" aria-hidden="true" style="{{qb.ptSt}}"><sc-if value="{{qb.qs1}}" hint-placeholder-val="{{false}}"><g style="{{qb.bdSt}}"><circle cx="151" cy="88" r="19" fill="#fff" stroke="#5B2EC9" stroke-width="2.5"/><g transform="translate(141.2 78.2) scale(.82)"><path d="M3 7l9-3.4 9 3.4-9 3.4z" fill="#4a4a4a"/><path d="M3 7l9 3.4V21L3 17.6z" fill="#111"/><path d="M12 10.4L21 7v10.6L12 21z" fill="#2b2b2b"/><path d="M3 11.2l9 3.4 9-3.4" fill="none" stroke="#D4AF37" stroke-width="1.7"/><rect x="14.6" y="14.6" width="2.6" height="4" fill="#D4AF37" transform="skewY(-18) translate(0 5.4)"/></g></g></sc-if><sc-if value="{{qb.qs2}}" hint-placeholder-val="{{false}}"><g style="{{qb.bdSt}}"><circle cx="150" cy="23" r="19" fill="#fff" stroke="#5B2EC9" stroke-width="2.5"/><g transform="translate(140.2 13.2) scale(.82)"><path d="M3 7l9-3.4 9 3.4-9 3.4z" fill="#4a4a4a"/><path d="M3 7l9 3.4V21L3 17.6z" fill="#111"/><path d="M12 10.4L21 7v10.6L12 21z" fill="#2b2b2b"/><path d="M3 11.2l9 3.4 9-3.4" fill="none" stroke="#D4AF37" stroke-width="1.7"/><rect x="14.6" y="14.6" width="2.6" height="4" fill="#D4AF37" transform="skewY(-18) translate(0 5.4)"/></g></g></sc-if><sc-if value="{{qb.qs3}}" hint-placeholder-val="{{false}}"><g style="{{qb.bdSt}}"><circle cx="150" cy="25" r="19" fill="#fff" stroke="#5B2EC9" stroke-width="2.5"/><g transform="translate(140.2 15.2) scale(.82)"><path d="M3 7l9-3.4 9 3.4-9 3.4z" fill="#4a4a4a"/><path d="M3 7l9 3.4V21L3 17.6z" fill="#111"/><path d="M12 10.4L21 7v10.6L12 21z" fill="#2b2b2b"/><path d="M3 11.2l9 3.4 9-3.4" fill="none" stroke="#D4AF37" stroke-width="1.7"/><rect x="14.6" y="14.6" width="2.6" height="4" fill="#D4AF37" transform="skewY(-18) translate(0 5.4)"/></g></g></sc-if><sc-if value="{{qb.isAl}}" hint-placeholder-val="{{false}}"><circle class="qPtr" cx="151" cy="88" r="20.5" fill="none" stroke="currentColor" stroke-width="3.5"/></sc-if><sc-if value="{{qb.isAl2}}" hint-placeholder-val="{{false}}"><circle class="qPtr" cx="150" cy="23" r="20.5" fill="none" stroke="currentColor" stroke-width="3.5"/></sc-if><sc-if value="{{qb.isAl3}}" hint-placeholder-val="{{false}}"><circle class="qPtr" cx="150" cy="25" r="20.5" fill="none" stroke="currentColor" stroke-width="3.5"/></sc-if></svg></div></div>
+    <div style="{{qb.msgSt}}">{{qb.msg}}</div>
+    <div style="display:flex;gap:8px;margin-top:12px"><button class="btn2" onClick="{{qb.left}}" style="min-height:46px">Turn left</button><button class="btn2" onClick="{{qb.right}}" style="min-height:46px">Turn right</button></div>
+    <div class="mut" style="font-size:13px;margin-top:8px">Prototype: your heading is simulated with the buttons. The real app reads your device compass.</div>
+    <button onClick="{{qb.tipTog}}" aria-expanded="{{qb.tipOpen}}" style="margin:12px auto 0;display:flex;align-items:center;gap:8px;min-height:44px;padding:0 16px;border:1px solid {{qb.accBd}};border-radius:22px;background:{{qb.accBg}};color:#2A1B5E;font-size:14px;font-weight:600"><span style="width:10px;height:10px;border-radius:5px;background:{{qb.accDot}}"></span>Compass accuracy: {{qb.accTxt}}<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="{{qb.tipChev}}"><path d="M6 9l6 6 6-6"/></svg></button>
+    <sc-if value="{{qb.tipOpen}}" hint-placeholder-val="{{false}}"><div class="card" style="padding:12px 14px;margin-top:8px;text-align:left"><div style="font-weight:600">{{qb.tipTitle}}</div><div class="mut" style="font-size:14px;margin-top:2px">Move your phone in a figure of eight to calibrate it. Hold it flat and level, and keep it away from metal, magnets and speakers. If your device has no compass, Wasil shows the bearing above without a live needle.</div></div></sc-if>
+  </div>
+  <div style="flex:none;padding:6px 16px 10px;border-top:1px solid {{qb.ftBd}};background:{{qb.ftBg}}">
+    <div class="mut" style="font-size:12px;font-weight:700;letter-spacing:.14em;text-align:center;margin-bottom:6px">COMPASS STYLE</div>
+    <div style="display:flex;justify-content:center;gap:14px"><sc-for list="{{qb.tiles}}" as="t" hint-placeholder-count="3"><button onClick="{{t.pick}}" aria-label="{{t.aria}}" aria-pressed="{{t.on}}" style="{{t.st}}"><img src="{{t.img}}" alt="" style="width:54px;height:54px;object-fit:contain;border-radius:10px;background:#fff;filter:{{qb.fil}}"></button></sc-for></div>
+    <div style="display:flex;justify-content:center;gap:14px;margin-top:6px"><sc-for list="{{qb.tiles}}" as="t2" hint-placeholder-count="3"><span style="width:64px;height:16px;display:flex;align-items:center;justify-content:center"><sc-if value="{{t2.on}}" hint-placeholder-val="{{false}}"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="{{qb.accD}}"/><path d="M7 12.5l3.2 3.2L17 9" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></sc-if></span></sc-for></div>
+  </div>
+  <sc-if value="{{qb.setOpen}}" hint-placeholder-val="{{false}}"><div style="position:absolute;inset:0;background:rgba(20,12,60,.45);display:flex;flex-direction:column;justify-content:flex-end;z-index:30"><button aria-label="Close settings" onClick="{{qb.closeSet}}" style="flex:1;border:0;background:transparent"></button>
+    <div role="dialog" aria-label="Qibla settings" style="background:#fff;color:#241A4A;border-radius:24px 24px 0 0;padding:18px 18px 22px;max-height:86%;overflow:auto">
+      <div class="ser" style="font-size:20px;font-weight:700;margin-bottom:4px">Qibla settings</div>
+      <div class="mut" style="font-size:14px;margin-bottom:10px">Choose how the compass tells you that you are facing the Qibla.</div>
+      <div style="font-weight:600;margin:6px 0 6px">Theme</div>
+      <div style="display:flex;gap:8px;margin-bottom:12px"><sc-for list="{{qb.themes}}" as="th" hint-placeholder-count="3"><button onClick="{{th.pick}}" aria-pressed="{{th.on}}" style="{{th.st}}">{{th.l}}</button></sc-for></div>
+      <div style="font-weight:600;margin:0 0 4px">Colour</div>
+      <div style="display:flex;gap:6px;margin-bottom:10px"><sc-for list="{{qb.colors}}" as="co" hint-placeholder-count="6"><button onClick="{{co.pick}}" aria-label="{{co.l}}" aria-pressed="{{co.on}}" style="{{co.st}}"><sc-if value="{{co.on}}" hint-placeholder-val="{{false}}"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></sc-if></button></sc-for></div>
+      <sc-for list="{{qb.opts}}" as="o" hint-placeholder-count="2"><div style="display:flex;align-items:center;gap:12px;min-height:60px;border-top:1px solid #EEE9F7"><div style="flex:1"><div style="font-weight:600">{{o.t}}</div><div class="mut" style="font-size:13px">{{o.d}}</div></div><button role="switch" aria-checked="{{o.on}}" aria-label="{{o.t}}" onClick="{{o.tog}}" style="{{o.st}}"><span style="{{o.knob}}"></span></button></div></sc-for>
+      <div style="display:flex;gap:8px;margin-top:12px"><button class="btn2" onClick="{{qb.tryFx}}" style="min-height:48px;flex:1">Try it</button><button class="btn" onClick="{{qb.closeSet}}" style="min-height:48px;flex:1;background:{{qb.acc}}">Done</button></div>
+    </div></div></sc-if>
+  <sc-if value="{{qb.locOpen}}" hint-placeholder-val="{{false}}"><div style="position:absolute;inset:0;background:rgba(20,12,60,.45);display:flex;flex-direction:column;justify-content:flex-end;z-index:30"><button aria-label="Close location list" onClick="{{qb.closeLoc}}" style="flex:1;border:0;background:transparent"></button>
+    <div role="dialog" aria-label="Choose location" style="background:#fff;border-radius:24px 24px 0 0;padding:18px 18px 16px;max-height:70%;display:flex;flex-direction:column">
+      <div class="ser" style="font-size:20px;font-weight:700;margin-bottom:2px">Your location</div>
+      <div class="mut" style="font-size:14px;margin-bottom:8px">The Qibla direction is calculated from here.</div>
+      <div class="scroll" style="overflow:auto"><sc-for list="{{qb.cities}}" as="c" hint-placeholder-count="6"><button onClick="{{c.pick}}" aria-pressed="{{c.on}}" style="width:100%;display:flex;align-items:center;gap:12px;min-height:56px;border:0;border-top:1px solid #EEE9F7;background:transparent;text-align:left;padding:0 4px"><span style="flex:1"><b style="display:block;font-size:15px">{{c.n}}</b><span class="mut" style="font-size:13px">{{c.sub}}</span></span><sc-if value="{{c.on}}" hint-placeholder-val="{{false}}"><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="#5B2EC9"/><path d="M7 12.5l3.2 3.2L17 9" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></sc-if></button></sc-for></div>
+    </div></div></sc-if>
+</div>
+</sc-if>
+
+<sc-if value="{{s.mosque}}" hint-placeholder-val="{{false}}">
+<div style="position:absolute;inset:0;display:flex;flex-direction:column;background:#fff">
+  <div class="qhd" style="padding:12px 12px 6px"><button class="qbk" aria-label="Back" onClick="{{x.back}}"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg></button><div style="flex:1;min-width:0;text-align:center"><h1 class="ser" style="margin:0;font-size:21px;line-height:1.2">Mosque</h1></div><button class="qbk" aria-label="Mosque settings" onClick="{{mq.openSet}}"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg></button></div>
+  <div style="flex:1;min-height:0;display:flex;flex-direction:column;position:relative"><div style="position:relative;flex:none;height:326px;background:#EFEBF7;overflow:hidden"><svg width="100%" height="100%" viewBox="0 0 358 340" preserveAspectRatio="xMidYMid slice" aria-hidden="true" style="position:absolute;inset:0"><rect width="358" height="340" fill="#EFEBF7"/><path d="M-10 250 C60 230 110 290 190 270 S320 300 370 280 L370 350 L-10 350Z" fill="#CFE3F3"/><rect x="20" y="30" width="70" height="46" rx="14" fill="#DCEBD5"/><rect x="250" y="40" width="80" height="60" rx="16" fill="#DCEBD5"/><rect x="236" y="196" width="90" height="40" rx="14" fill="#DCEBD5"/><g stroke="#fff" stroke-width="9" stroke-linecap="round" fill="none"><path d="M-10 120 L370 150"/><path d="M-10 214 L370 190"/><path d="M110 -10 L140 350"/><path d="M240 -10 L214 350"/><path d="M-10 40 L370 60" stroke-width="5"/><path d="M60 -10 L40 350" stroke-width="5"/><path d="M320 -10 L300 350" stroke-width="5"/></g><g stroke="#E2DCEF" stroke-width="1.5" fill="none"><path d="M-10 170 L370 170"/><path d="M180 -10 L180 350"/><path d="M-10 90 L370 100"/><path d="M-10 300 L370 310"/></g></svg><div style="{{mq.ringSt}}"></div><div style="{{mq.youSt}}" aria-label="You are here" role="img"><span style="position:absolute;inset:-9px;border-radius:50%;background:rgba(66,133,244,.22);animation:qring 1.8s ease-out infinite"></span><span style="position:absolute;inset:0;border-radius:50%;background:#4285F4;border:3px solid #fff;box-shadow:0 2px 6px rgba(0,0,0,.3)"></span></div><sc-for list="{{mq.pins}}" as="pn" hint-placeholder-count="4"><button onClick="{{pn.pick}}" aria-label="{{pn.aria}}" style="{{pn.st}}"><svg width="{{pn.sz}}" height="{{pn.sz}}" viewBox="0 0 24 30" aria-hidden="true"><path d="M12 29s10-9.5 10-17A10 10 0 0 0 2 12c0 7.5 10 17 10 17z" fill="{{pn.fill}}" stroke="#fff" stroke-width="1.6"/><path d="M12 6.5a3.4 3.4 0 0 0-3.4 3.4V14h6.8V9.9A3.4 3.4 0 0 0 12 6.5zM8 14h8v3H8z" fill="#fff"/></svg></button></sc-for><div style="position:absolute;left:12px;right:12px;top:6px;z-index:4"><div style="display:flex;align-items:center;gap:8px;min-height:50px;border:0;border-radius:26px;background:#fff;box-shadow:0 6px 18px rgba(36,26,74,.25);padding:0 4px 0 12px"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#757575" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg><input aria-label="Search mosques by name, area or facility" placeholder="Search by name, area or facility" value="{{mq.q}}" onInput="{{mq.setQ}}" style="flex:1;min-width:0;border:0;outline:0;background:transparent;font-size:15px;color:#241A4A;min-height:44px"><button aria-label="Use my current location" onClick="{{mq.locate}}" style="flex:none;width:44px;height:44px;border:0;border-radius:22px;background:transparent;display:flex;align-items:center;justify-content:center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#5B2EC9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3.5" fill="#5B2EC9"/><circle cx="12" cy="12" r="7.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg></button></div></div><div role="group" aria-label="Radius" style="position:absolute;left:12px;bottom:38px;z-index:4;display:flex;align-items:center;gap:6px"><sc-for list="{{mq.radii}}" as="rd" hint-placeholder-count="3"><button onClick="{{rd.pick}}" aria-pressed="{{rd.on}}" style="{{rd.st}};box-shadow:0 2px 8px rgba(36,26,74,.18)">{{rd.l}}</button></sc-for></div><div style="position:absolute;right:12px;bottom:38px;z-index:4;font-size:11px;color:#6B6290;background:rgba(255,255,255,.88);border-radius:8px;padding:2px 8px">Illustrative map</div></div><div style="position:relative;z-index:5;flex:1;min-height:0;margin-top:-26px;background:#fff;border-radius:28px 28px 0 0;box-shadow:0 -10px 26px rgba(36,26,74,.16);display:flex;flex-direction:column"><div style="flex:none;width:44px;height:5px;border-radius:3px;background:#D9D0F0;margin:10px auto 12px"></div><div style="flex:none;display:flex;align-items:center;gap:10px;padding:0 16px 10px"><span style="flex:none;width:4px;height:22px;border-radius:2px;background:#5B2EC9"></span><b class="ser" style="flex:1;font-size:20px;line-height:1.2">{{mq.count}} {{mq.title}}</b><span class="mut" style="flex:none;font-size:12.5px">{{mq.near}}</span></div><div class="scroll" style="flex:1;min-height:0;padding:2px 16px 16px"><sc-for list="{{mq.rows}}" as="m" hint-placeholder-count="4"><div style="padding:12px;margin-bottom:14px;{{m.cardSt}};border-radius:22px;background:#fff;box-shadow:0 3px 12px rgba(91,46,201,.09)"><div style="display:flex;gap:12px"><button onClick="{{m.go}}" aria-label="{{m.aria}}" style="flex:none;position:relative;width:98px;height:98px;border:0;padding:0;border-radius:16px;overflow:hidden;background:#EEE9FC"><img src="{{m.img}}" alt="" style="width:98px;height:98px;object-fit:cover;display:block"><span style="position:absolute;left:6px;bottom:6px;display:inline-flex;align-items:center;gap:3px;background:rgba(36,26,74,.86);color:#fff;border-radius:100px;padding:2px 8px;font-size:12px;font-weight:700">{{m.rate}}<svg width="12" height="12" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z" fill="#FFB700"/></svg></span></button><div style="flex:1;min-width:0"><div style="display:flex;gap:8px;align-items:flex-start"><div class="ser" style="flex:1;min-width:0;font-size:18px;line-height:1.2;font-weight:700">{{m.name}}</div><span style="flex:none;background:#EEE9FC;color:#5B2EC9;border-radius:100px;padding:3px 10px;font-size:12.5px;font-weight:800">{{m.dist}}</span></div><div class="mut" style="display:flex;align-items:center;gap:4px;font-size:13px;margin-top:4px"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#7C4DDC" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg><span>{{m.area}}, Karachi</span></div><div style="display:flex;flex-wrap:wrap;gap:5px;margin-top:8px"><span style="{{m.t1St}}">{{m.t1}}</span><span style="{{m.t2St}}">{{m.t2}}</span><span style="{{m.t3St}}">{{m.t3}}</span></div><div><span style="{{m.jumSt}}">{{m.jumTxt}}</span></div></div></div><button onClick="{{m.go}}" aria-label="Get directions to {{m.name}}" style="width:100%;min-height:46px;margin-top:12px;border:0;border-radius:23px;background:linear-gradient(135deg,#5B2EC9,#43288A);color:#fff;font-weight:700;font-size:14.5px;display:flex;align-items:center;justify-content:center;gap:8px">Get Directions<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFE08A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></div></sc-for><sc-if value="{{mq.empty}}" hint-placeholder-val="{{false}}"><div style="text-align:center;padding:30px 10px"><div class="ser" style="font-size:18px;font-weight:700">No mosque found</div><div class="mut" style="font-size:14px;margin-top:4px">Try another name or area, or clear the filters.</div><button onClick="{{mq.clear}}" style="margin-top:12px;min-height:44px;padding:0 20px;border:0;border-radius:22px;background:#EEE9FC;color:#5B2EC9;font-weight:700">Clear filters</button></div></sc-if><div class="mut" style="font-size:12px;text-align:center;margin-top:4px">Sample mosques for the prototype. The real app lists mosques near your location.</div></div></div></div><sc-if value="{{mq.setOpen}}" hint-placeholder-val="{{false}}"><div style="position:absolute;inset:0;background:rgba(20,12,60,.45);display:flex;flex-direction:column;justify-content:flex-end;z-index:30"><button aria-label="Close settings" onClick="{{mq.closeSet}}" style="flex:1;border:0;background:transparent"></button>
+    <div role="dialog" aria-label="Mosque settings" style="background:#fff;color:#241A4A;border-radius:24px 24px 0 0;padding:18px 18px 22px;max-height:86%;overflow:auto">
+      <div class="ser" style="font-size:20px;font-weight:700;margin-bottom:4px">Mosque settings</div>
+      <div class="mut" style="font-size:14px;margin-bottom:8px">Choose how nearby mosques are shown.</div>
+      <sc-for list="{{mq.groups}}" as="g" hint-placeholder-count="5"><div style="border-top:1px solid #EEE9F7;padding:10px 0"><div style="font-weight:600">{{g.t}}</div><div class="mut" style="font-size:13px;margin-bottom:8px">{{g.d}}</div><div style="display:flex;gap:8px"><sc-for list="{{g.chips}}" as="c" hint-placeholder-count="3"><button onClick="{{c.pick}}" aria-pressed="{{c.on}}" style="{{c.st}}">{{c.l}}</button></sc-for></div></div></sc-for>
+      <div style="display:flex;gap:8px;margin-top:6px"><button class="btn2" onClick="{{mq.reset}}" style="min-height:48px;flex:1">Reset</button><button class="btn" onClick="{{mq.closeSet}}" style="min-height:48px;flex:1">Done</button></div>
+    </div></div></sc-if>
+</div>
+</sc-if>
+
+<sc-if value="{{s.mosqueMap}}" hint-placeholder-val="{{false}}">
+<div style="position:absolute;inset:0;display:flex;flex-direction:column;background:#EDEDED">
+  <div class="qhd" style="padding:12px 12px 6px;position:relative;z-index:3"><button class="qbk" aria-label="Back to mosque list" onClick="{{x.back}}"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg></button><div style="flex:1;min-width:0;text-align:center"><h1 class="ser" style="margin:0;font-size:21px;line-height:1.2">Directions</h1></div><span style="width:44px;flex:none"></span></div>
+  <div style="position:relative;flex:1;min-height:0;overflow:hidden">
+    <img src="/_blob/6103e5fc96f2068553718c5d6ca54418" alt="Map showing the route to {{mq.sel.name}}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 40%">
+    <div style="position:absolute;left:12px;right:12px;top:8px;background:#fff;border-radius:20px;box-shadow:0 8px 22px rgba(36,26,74,.22);padding:12px 14px;display:flex;gap:10px">
+      <div style="flex:none;display:flex;flex-direction:column;align-items:center;padding-top:14px;gap:3px"><span style="width:12px;height:12px;border:3px solid #5B2EC9;border-radius:6px;background:#fff"></span><span style="width:2px;height:4px;background:#999"></span><span style="width:2px;height:4px;background:#999"></span><span style="width:2px;height:4px;background:#999"></span><svg width="16" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s7-6.2 7-12a7 7 0 0 0-14 0c0 5.8 7 12 7 12z" fill="#5B2EC9"/><circle cx="12" cy="10" r="2.8" fill="#FFE08A"/></svg></div>
+      <div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:8px"><div style="border:1px solid #E3D9F7;border-radius:12px;background:#FAF8FF;min-height:40px;padding:0 12px;display:flex;align-items:center;font-size:13.5px;color:#241A4A"><span class="nw" style="overflow:hidden;text-overflow:ellipsis">Your location · D.H.A. Phase 2, Defence Housing</span></div><div style="border:1px solid #E3D9F7;border-radius:12px;background:#FAF8FF;min-height:40px;padding:0 12px;display:flex;align-items:center;font-size:13.5px;color:#241A4A"><span class="nw" style="overflow:hidden;text-overflow:ellipsis">{{mq.sel.name}}, Old Korangi Rd</span></div></div>
+    </div>
+    <div style="position:absolute;left:0;right:0;bottom:0;background:#fff;border-radius:28px 28px 0 0;box-shadow:0 -10px 28px rgba(36,26,74,.20);padding:10px 18px 22px"><div style="width:44px;height:5px;border-radius:3px;background:#D9D0F0;margin:0 auto 14px"></div><div style="display:flex;align-items:flex-start;gap:10px"><div style="flex:1;min-width:0"><div class="ser" style="font-size:22px;font-weight:700;line-height:1.2">{{mq.sel.name}}</div><div class="mut" style="display:flex;align-items:center;gap:4px;font-size:13px;margin-top:4px"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#7C4DDC" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg><span>{{mq.sel.area}}, Karachi</span></div></div><span style="flex:none;display:inline-flex;align-items:center;gap:3px;background:#241A4A;color:#fff;border-radius:100px;padding:4px 10px;font-size:13px;font-weight:700">{{mq.sel.rate}}<svg width="12" height="12" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z" fill="#FFB700"/></svg></span></div><div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:12px"><span style="background:#EEE9FC;color:#5B2EC9;border-radius:100px;padding:4px 12px;font-size:13px;font-weight:800">{{mq.sel.dist}} away</span><span style="background:#FFF3CC;color:#8A5B00;border-radius:100px;padding:4px 12px;font-size:13px;font-weight:800">Jumu'ah {{mq.sel.jum}}</span></div><div style="display:flex;gap:10px;margin:16px 0 14px"><sc-for list="{{mq.modes}}" as="md" hint-placeholder-count="2"><button onClick="{{md.pick}}" aria-pressed="{{md.on}}" aria-label="{{md.t}}, {{md.sub}}" style="{{md.st}}"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{md.ic}}"/></svg><span style="display:flex;align-items:baseline;gap:6px"><b style="font-size:22px;line-height:1">{{md.sub}}</b><span style="font-size:13px;font-weight:600;opacity:.85">{{md.t}}</span></span></button></sc-for></div><div style="display:flex;gap:10px"><button onClick="{{mq.share}}" aria-label="Share this mosque" style="flex:none;width:56px;min-height:52px;border:1.5px solid #D6CDEA;border-radius:26px;background:#fff;color:#5B2EC9;display:flex;align-items:center;justify-content:center;padding:0"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 8l5-5 5 5M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6"/></svg></button><button onClick="{{mq.start}}" style="flex:1;min-height:52px;border:0;border-radius:26px;background:linear-gradient(135deg,#5B2EC9,#43288A);color:#fff;font-weight:700;font-size:16px;display:flex;align-items:center;justify-content:center;gap:8px;box-shadow:0 6px 14px rgba(67,40,138,.3)"><svg width="18" height="18" viewBox="0 0 24 24" fill="#FFE08A" stroke="#FFE08A" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l18-8-8 18-2-8z"/></svg>Start navigation</button></div></div>
+  </div>
+</div>
+</sc-if>
+
+<sc-if value="{{s.states}}" hint-placeholder-val="{{false}}">
+<div style="position:absolute;inset:0;display:flex;flex-direction:column">
+  <div class="qhd" style="padding:12px 12px 6px"><button class="qbk" aria-label="Back" onClick="{{x.back}}"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg></button><div style="flex:1;min-width:0;text-align:center"><h1 class="ser" style="margin:0;font-size:21px;line-height:1.2">Offline &amp; error <span style="color:#5B3FD0">states</span></h1></div></div>
+  <div class="scroll" style="flex:1;padding:6px 16px 24px">
+    <sc-for list="{{sg.items}}" as="i" hint-placeholder-count="11"><div class="card" style="padding:12px 14px;margin-bottom:10px"><div style="display:flex;gap:8px;align-items:center"><span style="{{i.dot}}"></span><b style="flex:1;font-size:15px">{{i.t}}</b></div><div class="mut" style="font-size:14px;margin:4px 0 0 20px">{{i.m}}</div><div style="font-size:13px;font-weight:700;color:#4A22AB;margin:6px 0 0 20px">{{i.cta}}</div></div></sc-for>
+  </div>
+</div>
+</sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"appState":{"editor":null},"onSetRaw":{"editor":null},"onGetState":{"editor":null},"onHost":{"editor":null},"$preview":{"width":390,"height":844}}'>
+const pad = (n)=>String(n).padStart(2,'0');
+const MET = {
+  karachi:{n:'Karachi (Univ. of Islamic Sciences)',f:0,i:0},
+  mwl:{n:'Muslim World League',f:3,i:6},
+  isna:{n:'ISNA',f:13,i:14},
+  egypt:{n:'Egyptian General Authority',f:-4,i:5},
+  umm:{n:'Umm al-Qura',f:-1,i:12}
+};
+const NOWS = [{l:'4:10 AM',m:250},{l:'9:30 AM',m:570},{l:'2:31 PM',m:871},{l:'4:55 PM',m:1015},{l:'11:40 PM',m:1420},{l:'5:30 AM',m:330},{l:'6:30 PM',m:1110}];
+const IP = {
+  fajr:'M3 18h18M7 18a5 5 0 0 1 10 0M12 10V4M9 7l3-3 3 3',
+  dhuhr:'M8 12a4 4 0 1 0 8 0a4 4 0 1 0-8 0M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4',
+  asr:'M8 12a4 4 0 1 0 8 0a4 4 0 1 0-8 0M4 20h16M12 2v2M4.9 4.9l1.4 1.4M19.1 4.9l-1.4 1.4',
+  maghrib:'M3 18h18M7 18a5 5 0 0 1 10 0M12 4v6M9 7l3 3 3-3',
+  isha:'M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z'
+};
+const DOW = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+const dow = (d)=>(4 + d - 1) % 7;
+const OBL = ['fajr','dhuhr','asr','maghrib','isha'];
+const ORDER = ['tahajjud','fajr','ishraq','duha','dhuhr','asr','maghrib','awwabin','isha','witr'];
+const PR = {
+  tahajjud:{ar:'التهجد',en:'Tahajjud',cls:'Voluntary',rak:'2 rak’ah or more, in pairs. The number varies by practice.',exp:'Night prayer performed after sleeping, between Isha and Fajr. The last third of the night is preferred, but Tahajjud is not limited to it. It is distinct from general Qiyam al-Layl.'},
+  fajr:{ar:'الفجر',en:'Fajr',cls:'Obligatory',rak:'2 fard',exp:'From true dawn until sunrise.'},
+  ishraq:{ar:'الإشراق',en:'Ishraq',cls:'Voluntary',rak:'2 rak’ah, commonly',exp:'Prayed after the sunrise restricted period has passed. The start shown is a derived estimate (sunrise plus a configurable safety interval), not an independent astronomical event. Many scholars treat Ishraq and Duha as overlapping periods of one voluntary prayer.'},
+  duha:{ar:'الضحى',en:'Duha / Chasht',cls:'Voluntary',rak:'2 to 8 rak’ah are commonly mentioned; counts vary.',exp:'Morning prayer from after sunrise until shortly before solar noon. A later part of the morning is often described as preferred. The exact rule is pending approved scholarly content.'},
+  dhuhr:{ar:'الظهر',en:'Dhuhr',cls:'Obligatory',rak:'4 fard. On Fridays, Jumu’ah replaces Dhuhr.',exp:'From just after solar noon until Asr begins.'},
+  asr:{ar:'العصر',en:'Asr',cls:'Obligatory',rak:'4 fard',exp:'From the Asr shadow threshold until sunset. The threshold depends on your selected school (standard or Hanafi).'},
+  maghrib:{ar:'المغرب',en:'Maghrib',cls:'Obligatory',rak:'3 fard',exp:'From sunset until the relevant twilight disappears. Schools differ on how long this window lasts.'},
+  awwabin:{ar:'الأوابين',en:'Awwabin',cls:'Voluntary',rak:'Commonly 6 rak’ah after Maghrib, depending on convention.',exp:'Scholars use this term differently. Some apply it to prayer after Maghrib, while narrations also associate it with Duha. Wasil shows a post-Maghrib reminder only if you choose that convention.'},
+  isha:{ar:'العشاء',en:'Isha',cls:'Obligatory',rak:'4 fard',exp:'From the disappearance of evening twilight. The preferred time extends to Islamic midnight. The permissible time continues until Fajr according to your school.'},
+  witr:{ar:'الوتر',en:'Witr',cls:'Wajib (Hanafi) · Sunnah (other schools)',rak:'3 in the Hanafi school. 1 to 11 in other schools.',exp:'Prayed after Isha until Fajr. Its ruling differs between schools, so Wasil labels it by the school you choose.'}
+};
+const OWN=["namaz","all","detail","calendar","qibla","mosque","mosqueMap","states"];
+class Component extends DCLogic {
+  state = { nowIdx:2, sim:'ok', toast:'', sheet:null, date:5, cm:'daily', cs:'greg', detail:'dhuhr', pendingMethod:null, rm:{fajr:{on:true,o:0},dhuhr:{on:true,o:0},asr:{on:true,o:0},maghrib:{on:true,o:0},isha:{on:true,o:0},tahajjud:{on:false},lastThird:{on:false},ishraq:{on:false},duha:{on:false},awwabin:{on:false},witr:{on:false}}, sound:'Adhan', method:'karachi', asr:'hanafi', hl:'middle', hijri:'umm', hAdj:0, fmt:12, auto:true, off:{fajr:0,dhuhr:0,asr:0,maghrib:0,isha:0}, qh:0, rec:0, rs:0, pa:1, sa:0, bk:0, bkt:0, bkd:'n', abm:{}, fl:null, tdl:{}, tsel:0, ftu:false, rc:0, br:1, af:0, sel:null, dsu:false, abo:false, sv:'s', vi:0, vp:false, ri:0, rk:{}, di:2, dc:0, bt:'s', mini:true, dch:67, chg:0, lf:'All', lg:0, spd:0, slp:'Off', chp:2, picked:null, splay:false, qrec:false, lphase:'idle', msgs:null, rem:true, pphase:'idle', showWord:false, rtab:'surah', rview:'cards', sg:0, playing:false, jn:'255', layout:'translation', bm:false, selAyah:255, sq:'', mode:'read', sphase:'entry', sfilter:'All', qxk:'QX-01', marks:null, ish:'para', favT:'s', fav:null, rdOpen:false, liOpen:false, ishv:'shelf', stopR:null, stopL:null, theme:'teal', fs:2, ls:1, ts:1, tgNum:true, tgTr:true, tgTl:true, tgTj:false, nav:'scroll', stab:'layout', pane:'both', screen:"namaz", from:[] };
+  _emb(){ return typeof this.props.onSetRaw==='function'; }
+  liveState(){ return this._emb()?this.props.onGetState():this.state; }
+  setState(o,cb){ if(this._emb()) return this.props.onSetRaw(o,cb);
+    if(o&&typeof o==='object'&&o.screen&&OWN.indexOf(o.screen)<0){ o=Object.assign({},o); delete o.screen; delete o.from; }
+    return super.setState(o,cb); }
+  toast(...a){ if(this._emb()) return this.props.onHost("toast",a); return this._toast0(...a); }
+  _toast0(t){ this.setState({toast:t}); clearTimeout(this._tt); this._tt=setTimeout(()=>this.setState({toast:''}),2400); }
+  qDetect(...a){ if(this._emb()) return this.props.onHost("qDetect",a); return this._qDetect0(...a); }
+  _qDetect0(){ try{ if(!navigator.geolocation){ this.setState({qgst:'err'}); return; } this.setState({qgst:'busy'}); navigator.geolocation.getCurrentPosition((p)=>{ const la=p.coords.latitude,lo=p.coords.longitude; this.setState({qgeo:{la,lo,label:null},qgst:'ok'}); try{ const ac=new AbortController(); const t=setTimeout(()=>ac.abort(),4000); fetch('https://api.bigdatacloud.net/data/reverse-geocode-client?latitude='+la+'&longitude='+lo+'&localityLanguage=en',{signal:ac.signal}).then((r)=>r.json()).then((j)=>{ clearTimeout(t); const n=[j.city||j.locality,j.countryName].filter(Boolean).join(', '); if(n) this.setState({qgeo:{la,lo,label:n}}); }).catch(()=>{}); }catch(e){} },(e)=>{ this.setState({qgst:(e&&e.code===1)?'denied':'err'}); },{enableHighAccuracy:true,timeout:12000,maximumAge:0}); }catch(e){ this.setState({qgst:'err'}); } }
+
+  renderVals(){
+    const p=this.props; const S=this._emb()?p.appState:this.state;
+    if(!window.__prayTick){ window.__prayTick=setInterval(()=>{ try{ this.setState({tick:Date.now()}); }catch(e){} },60000); }
+    const set=(o)=>this.setState((o&&o.screen&&o.screen!==S.screen&&S.salacc&&!o.salacc)?{...o,salacc:Object.fromEntries(Object.entries(S.salacc).map(([k,v])=>[k,/^dn[0-9m]*$/.test(k)?false:v]))}:o);
+    const go=(screen)=>()=>set({screen,from:[...S.from,S.screen],sheet:null});
+    const back0=()=>{ const S2=this.liveState(); const f=[...S2.from]; const to=f.pop()||'home'; set({screen:to,from:f,sheet:null}); };
+    const back=()=>{ const w=window; const now=Date.now(); if(w.__bkT&&now-w.__bkAt<320){ clearTimeout(w.__bkT); w.__bkT=0; set({screen:'home',from:[],sheet:null}); return; } w.__bkAt=now; w.__bkT=setTimeout(()=>{ w.__bkT=0; back0(); },320); };
+    const fm=(m,short)=>{ const v=((Math.round(m)%1440)+1440)%1440; const h=Math.floor(v/60), mi=v%60; if(S.fmt===24) return pad(h)+':'+pad(mi); const h12=h%12||12; return h12+':'+pad(mi)+(short?'':' '+(h>=12?'PM':'AM')); };
+    const dur=(m)=>{ const h=Math.floor(m/60), mi=m%60; return h>0?`${h}h ${mi}m`:`${mi}m`; };
+    const sched=(d)=>{
+      const me=MET[S.method]||MET.karachi; const k=d-5; const o=S.off;
+      const fajr=Math.round(303+0.6*k+me.f+o.fajr), sunrise=Math.round(378+0.5*k), dhuhr=Math.round(741-0.3*k+o.dhuhr);
+      const asr=Math.round((S.asr==='hanafi'?1011:958)-0.7*k+o.asr), maghrib=Math.round(1092-0.9*k+o.maghrib), isha=Math.round(1170-0.8*k+me.i+o.isha);
+      const fajrN=fajr+1441; const total=fajrN-maghrib;
+      return {fajr,sunrise,dhuhr,asr,maghrib,isha,fajrN,midnight:Math.round(maghrib+total/2),lastThird:Math.round(maghrib+total*2/3),ishraq:sunrise+15,zawal:dhuhr-10,sunsetR:maghrib-15};
+    };
+    const CDAY=86400000;
+    let CHF=null;
+    try{ CHF=new Intl.DateTimeFormat('en-u-ca-islamic-umalqura-nu-latn',{timeZone:'UTC',year:'numeric',month:'numeric',day:'numeric'}); }catch(e){}
+    const cHP=(t)=>{ if(!CHF) return {y:0,m:1,d:1}; const p=CHF.formatToParts(new Date(t)); const g=(k)=>parseInt((p.find(z=>z.type===k)||{}).value,10); return {y:g('year'),m:g('month'),d:g('day')}; };
+    const cGP=(t)=>{ const d=new Date(t); return {y:d.getUTCFullYear(),m:d.getUTCMonth()+1,d:d.getUTCDate()}; };
+    const cHT=(y,m,d)=>{ let t=Math.round((Date.UTC(622,6,19)+((y-1)*354.36707+(m-1)*29.530588+(d-1))*CDAY)/CDAY)*CDAY; for(let i=0;i<24;i++){ const p=cHP(t); if(p.y===y&&p.m===m&&p.d===d) return t; const diff=Math.round(((p.y-y)*12+(p.m-m))*29.53+(p.d-d)); t-=(diff||((p.d<d)?-1:1))*CDAY; } return t; };
+    const HMF=['Muharram','Safar','Rabi Al-Awwal','Rabi Al-Thani','Jumada Al-Ula','Jumada Al-Thani','Rajab','Shaaban','Ramadan','Shawwal','Dhul Qadah','Dhul Hijjah'];
+    const hij=(d)=>{ const p=cHP(Date.UTC(2026,9,d)+(S.hAdj||0)*CDAY); return p.y?{d:p.d,mo:HMF[p.m-1],y:p.y}:{d:Math.min(29,d+17),mo:'Rabi Al-Thani',y:1448}; };
+    const hijStr=(d)=>{ const h=hij(d); return `${h.d} ${h.mo} ${h.y} AH`; };
+    const gregStr=(d)=>`${DOW[dow(d)]}, ${d} Oct 2026`;
+    const T=sched(5);
+    const _pkt=new Date(Date.now()+5*3600000); const now=_pkt.getUTCHours()*60+_pkt.getUTCMinutes();
+    let cur=null,nx,prevT,endT=null;
+    if(now<T.fajr){cur='Isha';nx={id:'fajr',t:T.fajr};prevT=T.isha-1440;endT=T.fajr;}
+    else if(now<T.sunrise){cur='Fajr';nx={id:'dhuhr',t:T.dhuhr};prevT=T.fajr;endT=T.sunrise;}
+    else if(now<T.dhuhr){nx={id:'dhuhr',t:T.dhuhr};prevT=T.sunrise;}
+    else if(now<T.asr){cur='Dhuhr';nx={id:'asr',t:T.asr};prevT=T.dhuhr;endT=T.asr;}
+    else if(now<T.maghrib){cur='Asr';nx={id:'maghrib',t:T.maghrib};prevT=T.asr;endT=T.maghrib;}
+    else if(now<T.isha){cur='Maghrib';nx={id:'isha',t:T.isha};prevT=T.maghrib;endT=T.isha;}
+    else{cur='Isha';nx={id:'fajr',t:T.fajrN};prevT=T.isha;endT=T.fajrN;}
+    const tomorrow = nx.t>1440;
+    let status;
+    if(!cur) status=`Fajr ended at sunrise (${fm(T.sunrise)}).`;
+    else if(cur==='Isha') status = now<T.midnight||now<T.fajr?`Isha is open until Fajr.`:`Isha is open until Fajr.`;
+    else status=`${cur} is open until ${fm(endT)}.`;
+    if(cur==='Isha' && now>=T.isha && now<T.midnight) status=`Isha is open. Preferred until ${fm(T.midnight)}.`;
+    const inR = (a,b)=> now>=a && now<b;
+    let vol='';
+    if(inR(T.sunrise,T.ishraq)) vol='Voluntary prayer is not permitted now (sunrise)';
+    else if(inR(T.zawal,T.dhuhr)) vol='Voluntary prayer is not permitted now (solar noon)';
+    else if(inR(T.sunsetR,T.maghrib)) vol='Voluntary prayer is not permitted now (sunset)';
+    else if(inR(T.ishraq,T.zawal)) vol='Duha window is open';
+    else if(now>=T.lastThird-1440 && now<T.fajr) vol='Last third of the night';
+    else if(now>=T.isha || now<T.fajr) vol='Night prayer window is open';
+    const nxName=PR[nx.id].en;
+    const nxTime=fm(nx.t)+(tomorrow?' tomorrow':'');
+    const cd=dur(nx.t-now);
+    const win=(id,TT)=>{
+      switch(id){
+        case 'tahajjud': return {a:TT.isha,b:TT.fajrN,txt:`${fm(TT.isha)} – ${fm(TT.fajrN)}`,rec:`Preferred from ${fm(TT.lastThird)} (last third of the night). Tahajjud is also valid earlier in the night, after sleep.`};
+        case 'fajr': return {a:TT.fajr,b:TT.sunrise,txt:`${fm(TT.fajr)} – ${fm(TT.sunrise)}`,rec:'Pray soon after dawn begins.'};
+        case 'ishraq': return {a:TT.ishraq,b:TT.zawal,txt:`From ${fm(TT.ishraq)}`,rec:'Starts about 15 minutes after sunrise (configurable). Overlaps Duha.'};
+        case 'duha': return {a:TT.ishraq,b:TT.zawal,txt:`${fm(TT.ishraq)} – ${fm(TT.zawal)}`,rec:'Often described as preferred later in the morning, from about 9:00 AM. Pending scholarly approval.'};
+        case 'dhuhr': return {a:TT.dhuhr,b:TT.asr,txt:`${fm(TT.dhuhr)} – ${fm(TT.asr)}`,rec:'Pray early in the window.'};
+        case 'asr': return {a:TT.asr,b:TT.maghrib,txt:`${fm(TT.asr)} – ${fm(TT.maghrib)}`,rec:`Avoid delaying past ${fm(TT.sunsetR)}, when the sun is close to setting.`};
+        case 'maghrib': return {a:TT.maghrib,b:TT.isha,txt:`${fm(TT.maghrib)} – ${fm(TT.isha)}`,rec:'Pray soon after sunset.'};
+        case 'awwabin': return {a:TT.maghrib,b:TT.isha,txt:`After Maghrib · ${fm(TT.maghrib)} – ${fm(TT.isha)}`,rec:'Depends on your chosen convention. Not an independent astronomical time.'};
+        case 'isha': return {a:TT.isha,b:TT.fajrN,txt:`${fm(TT.isha)} – ${fm(TT.fajrN)}`,rec:`Preferred until Islamic midnight (${fm(TT.midnight)}).`};
+        default: return {a:TT.isha,b:TT.fajrN,txt:`${fm(TT.isha)} – ${fm(TT.fajrN)}`,rec:'After Isha. Before sleeping, or in the last third of the night.'};
+      }
+    };
+    const restricted = inR(T.sunrise,T.ishraq)||inR(T.zawal,T.dhuhr)||inR(T.sunsetR,T.maghrib);
+    const stat=(id)=>{
+      const w=win(id,T); const isVol=!OBL.includes(id);
+      const open=(now>=w.a&&now<w.b)||(now+1440>=w.a&&now+1440<w.b);
+      if(isVol && restricted && id!=='tahajjud' && id!=='witr') return open? 'Restricted':'';
+      if(open) return 'Open now';
+      if(id==='isha'||id==='tahajjud'||id==='witr') return 'Upcoming';
+      return now<w.a?'Upcoming':'Passed';
+    };
+    const tagStyle=(t)=> t==='Open now'?'background:#5B2EC9;color:#fff;border-radius:13px;padding:3px 10px;font-size:12px;font-weight:700':t==='Restricted'?'background:#FDE7EA;color:#6B1626;border-radius:13px;padding:3px 10px;font-size:12px;font-weight:700':t==='Upcoming'?'border:1.5px solid #5B2EC9;color:#3B1C9A;border-radius:13px;padding:2px 9px;font-size:12px;font-weight:700':'color:#5A4E80;font-size:12px;font-weight:600';
+    const bell=(id)=>({bellOn:!!(S.rm[id]&&S.rm[id].on),bellFill:(S.rm[id]&&S.rm[id].on)?'#CDBCF3':'none',bellLabel:`Reminder for ${PR[id].en}`,bell:()=>{ const r=S.rm[id]||{on:false,o:0}; set({rm:{...S.rm,[id]:{...r,on:!r.on}}}); this.toast(!r.on?`Reminder on for ${PR[id].en}`:`Reminder off for ${PR[id].en}`); }});
+    const openDetail=(id)=>()=>set({detail:id,screen:'detail',from:[...S.from,S.screen]});
+    const rows=OBL.map((id)=>{
+      const isNow=(cur&&cur.toLowerCase()===id), isNext=nx.id===id;
+      const done = !isNow && !isNext && (now>=T[id]) ;
+      const tag=isNow?'Now':isNext?'Next':done?'Done':'';
+      const b=bell(id);
+      return {name:PR[id].en,time:fm(T[id]),tag,sub:PR[id].rak.split(' ')[0]+' rak’ah · Fard',d:IP[id],aria:`${PR[id].en} at ${fm(T[id])}. ${tag}`,open:openDetail(id),
+        rowSt:`display:flex;align-items:center;gap:4px;padding:0 6px 0 0;border-radius:18px;background:${isNow?'#F1EBFD':'#fff'};border:${isNow?'1.5px solid #5B2EC9':isNext?'1.5px solid #B9A3F0':'1px solid #E7DFF6'};box-shadow:${isNow?'0 4px 14px rgba(91,46,201,.14)':'none'}`,
+        icSt:`width:44px;height:44px;border-radius:22px;flex:none;display:flex;align-items:center;justify-content:center;background:${isNow?'#5B2EC9':done?'#EFEAF8':'#F1EBFD'}`,icC:isNow?'#FFFFFF':done?'#5A4E80':'#5B2EC9',
+        nameSt:`font-size:18px;font-weight:${isNow||isNext?700:600};color:${done?'#5A4E80':'#241A4A'}`,timeSt:`font-size:17px;font-weight:600;color:${done?'#5A4E80':'#241A4A'}`,
+        tagSt:isNow?'background:#5B2EC9;color:#fff;border-radius:11px;padding:2px 8px;font-size:11px;font-weight:700':isNext?'border:1.5px solid #5B2EC9;color:#3B1C9A;border-radius:11px;padding:1px 7px;font-size:11px;font-weight:700':'color:#5A4E80;font-size:11px;font-weight:600',
+        bell:b.bell,bellOn:b.bellOn,bellFill:b.bellFill,bellLabel:b.bellLabel};
+    });
+    const SKY={
+night:['#14103A','#2E2373'],
+dawn:['#2C2470','#8A3C7E'],
+morning:['#1F4A9E','#3E70C4'],
+day:['#234AA8','#3766C2'],
+afternoon:['#5A3FA8','#B0553F'],
+sunset:['#4B2A8F','#B8472F']
+};
+    const phase = now<T.fajr?'night':now<T.sunrise?'dawn':now<T.dhuhr?'morning':now<T.asr?'day':now<T.maghrib?'afternoon':now<T.isha?'sunset':'night';
+    const dayArc = now>=T.fajr && now<T.maghrib;
+    let ap;
+    if(dayArc){ ap=Math.max(0,Math.min(1,(now-T.sunrise)/(T.maghrib-T.sunrise))); }
+    else { const nn=now<T.fajr?now+1440:now; ap=Math.max(0,Math.min(1,(nn-T.maghrib)/(T.fajrN-T.maghrib))); }
+    const nextRem=S.rm[nx.id];
+    const n={
+ok:S.sim!=='locdenied',
+locDenied:S.sim==='locdenied',
+cached:S.sim==='cached',
+greg:gregStr(5),
+hijri:hijStr(5),
+name:nxName,
+time:nxTime,
+cd,
+status,
+vol,
+hasVol:!!vol,
+rows,
+sunrise:fm(T.sunrise),
+skySt:`position:relative;overflow:hidden;border-radius:28px;padding:18px 18px 16px;color:#fff;background:linear-gradient(165deg,${SKY[phase][0]},${SKY[phase][1]});box-shadow:0 10px 28px rgba(36,26,74,.25)`,
+night:!dayArc,
+arcP:(ap*100).toFixed(1),
+mx:(160-130*Math.cos(Math.PI*ap)).toFixed(1),
+my:(94-74*Math.sin(Math.PI*ap)).toFixed(1),
+sR:dayArc?11:0,
+gR:dayArc?19:0,
+mgR:dayArc?0:19,
+moonC:dayArc?'none':'#F3EEFF',
+arcL:dayArc?`Sunrise ${fm(T.sunrise)}`:`Sunset ${fm(T.maghrib)}`,
+arcR:dayArc?`Sunset ${fm(T.maghrib)}`:`Fajr ${fm(T.fajr)}`,
+arcLabel:`${dayArc?'Sun':'Moon'} position, ${Math.round(ap*100)} percent of the way through the ${dayArc?'day':'night'}`,
+method:(MET[S.method]||MET.karachi).n,
+asr:S.asr==='hanafi'?'Hanafi':'Standard',
+remindText:(nextRem&&nextRem.on)?`Reminder on for ${nxName}`:`Remind me for ${nxName}`,
+remindNext:()=>{ const r=S.rm[nx.id]||{on:false,o:0}; set({rm:{...S.rm,[nx.id]:{...r,on:!r.on}}}); this.toast(!r.on?`We will remind you for ${nxName}`:'Reminder off'); }
+};
+    const al={
+rows:ORDER.map((id)=>{ const wn=win(id,T); const t=stat(id); const b=bell(id);
+        return {name:PR[id].en,cls:PR[id].cls.split(' · ')[0].split(' (')[0],window:wn.txt,tag:t,tagSt:tagStyle(t)+';min-width:56px;text-align:center',open:openDetail(id),aria:`${PR[id].en}, ${PR[id].cls}, ${wn.txt}`,
+        dot:OBL.includes(id)?'width:12px;height:12px;border-radius:6px;background:#5B2EC9;flex:none':'width:12px;height:12px;border-radius:6px;border:2px solid #8E6AF0;background:#fff;flex:none',
+        rowSt:`display:flex;align-items:center;gap:4px;padding:0 6px 0 14px;border-bottom:1px solid #EEE8F8;background:${t==='Open now'?'#F8F5FE':'#fff'}`,
+        bell:b.bell,bellOn:b.bellOn,bellFill:b.bellFill,bellLabel:b.bellLabel}; }),
+restricted:[{name:'After sunrise',window:`${fm(T.sunrise)} – ${fm(T.ishraq)}`},{name:'Solar noon (zawal)',window:`${fm(T.zawal)} – ${fm(T.dhuhr)}`},{name:'Before sunset',window:`${fm(T.sunsetR)} – ${fm(T.maghrib)}`}]
+};
+    const dId=S.detail;
+    const dp=PR[dId];
+    const dw=win(dId,T);
+    const dr=S.rm[dId]||{on:false,o:0};
+    const dst=stat(dId);
+    const dt={
+ar:dp.ar,
+en:dp.en,
+cls:dp.cls,
+window:dw.txt,
+rec:dw.rec,
+now:dst==='Open now'?'Open now':dst==='Restricted'?'Not permitted at this moment':dst==='Passed'?'Window has passed for today':'Upcoming today',
+exp:dp.exp,
+rak:dp.rak,
+method:(MET[S.method]||MET.karachi).n+' · '+(S.asr==='hanafi'?'Hanafi':'Standard')+' Asr',
+on:!!dr.on,
+remindText:dr.on?(OBL.includes(dId)?(dr.o?`${dr.o} minutes before`:'At prayer start'):'Optional reminder on'):'Off',
+toggle:()=>{ set({rm:{...S.rm,[dId]:{...dr,on:!dr.on}}}); },
+trackSt:`position:relative;width:52px;height:30px;border-radius:15px;border:0;padding:0;flex:none;background:${dr.on?'#5B2EC9':'#8F86A8'}`,
+knobSt:`position:absolute;top:3px;left:${dr.on?25:3}px;width:24px;height:24px;border-radius:12px;background:#fff`
+};
+    const segBtn=(on)=>`flex:1;min-width:0;min-height:44px;border-radius:22px;border:0;font-weight:600;font-size:13.5px;background:${on?'#fff':'transparent'};color:${on?'#3B1C9A':'#4A4166'};box-shadow:${on?'0 1px 6px rgba(91,46,201,.18)':'none'}`;
+    const calAdj=S.hAdj||0;
+    const hP=(t)=>cHP(t+calAdj*CDAY);
+    const hT=(y,m,d)=>cHT(y,m,d)-calAdj*CDAY;
+    const CGM=['January','February','March','April','May','June','July','August','September','October','November','December'];
+    const CDW=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+    const T0=Date.UTC(2026,9,5);
+    const calSel=S.csel||T0;
+    const calH0=hP(T0);
+    const calGy=S.gcy||2026, calGm=S.gcm||10, calHy=S.hcy||calH0.y||1448, calHm=S.hcm||calH0.m||4;
+    const calHij=S.cs==='hijri';
+    const HSH=['Muharram','Safar','Rabi I','Rabi II','Jumada I','Jumada II','Rajab','Shaaban','Ramadan','Shawwal','Dhul Qadah','Dhul Hijjah'];
+    const CEV=[[1,1,'Islamic New Year','First day of Muharram, the start of the Hijri year.'],[1,10,'Day of Ashura','10 Muharram. A day of fasting.'],[3,12,'Mawlid al-Nabi','12 Rabi Al-Awwal. The birth of the Prophet, peace be upon him.'],[7,27,'Isra and Mi\u2019raj','27 Rajab. The Night Journey and Ascension.'],[8,15,'Mid-Shaaban','15 Shaaban. The night of Bara\u2019ah.'],[9,1,'First day of Ramadan','The start of the month of fasting.'],[9,27,'Laylat al-Qadr (27th)','Commonly observed on the 27th night of Ramadan.'],[10,1,'Eid al-Fitr','The festival of breaking the fast.'],[12,9,'Day of Arafah','9 Dhul Hijjah. A day of fasting for those not on Hajj.'],[12,10,'Eid al-Adha','The festival of sacrifice.']];
+    const evFor=(hp)=>{ const out=CEV.filter((e)=>e[0]===hp.m&&e[1]===hp.d).map((e)=>({name:e[2],desc:e[3],dot:'#D9A21B',bg:'#FFF6DD'})); if(hp.d>=13&&hp.d<=15) out.push({name:'White Days (Ayyam al-Bid)',desc:'13, 14 and 15 of the Hijri month. Recommended days of fasting.',dot:'#8F78E0',bg:'#F3EEFF'}); return out; };
+    const calCell=(t,main,sub,inMonth)=>{ const hp=hP(t); const evs=evFor(hp); const isSel=t===calSel, isToday=t===T0; const hasEv=evs.some((e)=>e.dot==='#D9A21B'), hasWhite=evs.some((e)=>e.dot!=='#D9A21B');
+      const gp=cGP(t);
+      return {main,sub,aria:CDW[new Date(t).getUTCDay()]+', '+gp.d+' '+CGM[gp.m-1]+' '+gp.y+', '+hp.d+' '+HMF[hp.m-1]+' '+hp.y+' AH'+(evs.length?', '+evs.map((e)=>e.name).join(', '):''),pick:()=>set({csel:t}),
+        st:`position:relative;min-height:52px;border-radius:14px;border:${isToday&&!isSel?'1.5px solid #5B2EC9':'1px solid transparent'};background:${isSel?'linear-gradient(160deg,#5B43C0,#2E1F78)':'transparent'};display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0;padding:0`,
+        mainSt:`font-size:16px;font-weight:600;line-height:20px;color:${isSel?'#fff':'#241A4A'}`,subSt:`font-size:11px;line-height:13px;color:${isSel?'#EDE5FF':'#5A4E80'}`,
+        dotSt:(hasEv||hasWhite)?`position:absolute;top:5px;right:7px;width:7px;height:7px;border-radius:4px;background:${hasEv?'#D9A21B':'#8F78E0'}`:'display:none'}; };
+    let calCells=[], calTitle='', calSub='';
+    if(!calHij){ const first=Date.UTC(calGy,calGm-1,1), n=new Date(Date.UTC(calGy,calGm,0)).getUTCDate(); for(let i=0;i<new Date(first).getUTCDay();i++) calCells.push({main:'',sub:'',aria:'',pick:()=>{},st:'min-height:52px;border:0;background:transparent;display:block;padding:0',mainSt:'',subSt:'',dotSt:'display:none'});
+      for(let d=1;d<=n;d++){ const t=Date.UTC(calGy,calGm-1,d); const hp=hP(t); calCells.push(calCell(t,d,hp.d===1?HMF[hp.m-1].slice(0,5):hp.d,true)); }
+      const h1=hP(first), h2=hP(Date.UTC(calGy,calGm-1,n)); calTitle=CGM[calGm-1]+' '+calGy; calSub=(h1.m===h2.m?HMF[h1.m-1]:HSH[h1.m-1]+' – '+HSH[h2.m-1])+' '+(h1.y===h2.y?h2.y:h1.y+'/'+h2.y)+' AH'; }
+    else { const first=hT(calHy,calHm,1); const nx=calHm===12?hT(calHy+1,1,1):hT(calHy,calHm+1,1); const n=Math.round((nx-first)/CDAY); for(let i=0;i<new Date(first).getUTCDay();i++) calCells.push({main:'',sub:'',aria:'',pick:()=>{},st:'min-height:52px;border:0;background:transparent;display:block;padding:0',mainSt:'',subSt:'',dotSt:'display:none'});
+      for(let d=1;d<=n;d++){ const t=first+(d-1)*CDAY; const gp=cGP(t); calCells.push(calCell(t,d,gp.d===1?CGM[gp.m-1].slice(0,3):gp.d,true)); }
+      const g1=cGP(first), g2=cGP(first+(n-1)*CDAY); calTitle=HMF[calHm-1]+' '+calHy+' AH'; calSub=(g1.m===g2.m?CGM[g1.m-1]:CGM[g1.m-1].slice(0,3)+' – '+CGM[g2.m-1].slice(0,3))+' '+(g1.y===g2.y?g2.y:g1.y+'/'+g2.y); }
+    const stepMon=(k)=>()=>{ if(!calHij){ let y=calGy,m=calGm+k; if(m<1){m=12;y--;} if(m>12){m=1;y++;} if(y<1883||y>2174) return; set({gcy:y,gcm:m}); } else { let y=calHy,m=calHm+k; if(m<1){m=12;y--;} if(m>12){m=1;y++;} if(y<1300||y>1600) return; set({hcy:y,hcm:m}); } };
+    const selG=cGP(calSel), selH=hP(calSel);
+    const selEvs=evFor(selH);
+    const upcoming=[];
+    for(const yy of [calH0.y,calH0.y+1]) for(const e of CEV){ const t=hT(yy,e[0],e[1]); const hp=hP(t); if(hp.y===yy&&hp.m===e[0]&&hp.d===e[1]&&t>=T0) upcoming.push({t,e,hp}); }
+    upcoming.sort((a,b)=>a.t-b.t);
+    const cl={
+systems:[['greg','Gregorian'],['hijri','Hijri']].map(([k,l])=>({label:l,on:S.cs===k,pick:()=>set({cs:k}),st:`min-height:38px;border-radius:17px;border:0;padding:0 12px;font-size:13px;font-weight:600;background:${S.cs===k?'#fff':'transparent'};color:${S.cs===k?'#3B1C9A':'#4A4166'}`})),
+modes:[['month','Calendar'],['events','Events']].map(([k,l])=>({label:l,on:(S.cm==='events'?'events':'month')===k,pick:()=>set({cm:k}),st:segBtn((S.cm==='events'?'events':'month')===k)})),
+monthView:S.cm!=='events'&&S.cm!=='convert',
+eventsView:S.cm==='events',
+convert:S.cm==='convert',
+notConvert:S.cm!=='convert',
+openConv:()=>set({cm:'convert',cmb:S.cm==='events'?'events':'month'}),
+closeConv:()=>set({cm:S.cmb||'month'}),
+titleSz:calHij?21:24,
+kicker:S.cm==='events'?'Islamic calendar':(calHij?'Hijri month':'Gregorian month'),
+title:calTitle,
+subtitle:calSub,
+prev:stepMon(-1),
+next:stepMon(1),
+heads:['S','M','T','W','T','F','S'].map((t)=>({t})),
+cells:calCells,
+selMain:CDW[new Date(calSel).getUTCDay()]+', '+selG.d+' '+CGM[selG.m-1]+' '+selG.y,
+selSub:selH.d+' '+HMF[selH.m-1]+' '+selH.y+' AH',
+selEvents:selEvs.length?selEvs:[{name:'No Islamic event on this day',desc:'Select another date to see events and White Days.',dot:'#CFC3EE',bg:'#FAF8FF'}],
+convertSel:()=>set({cm:'convert',cmb:'month',cvdir:'g2h',cvgd:String(selG.d),cvgm:selG.m,cvgy:String(selG.y)}),
+goToday:()=>set({csel:T0,gcy:2026,gcm:10,hcy:calH0.y,hcm:calH0.m}),
+upcoming:upcoming.slice(0,9).map((u)=>{ const gp=cGP(u.t); const days=Math.round((u.t-T0)/CDAY); return {day:gp.d,mon:CGM[gp.m-1].slice(0,3),name:u.e[2],hijri:u.hp.d+' '+HMF[u.hp.m-1]+' '+u.hp.y+' AH',when:days===0?'Today':days===1?'Tomorrow':'In '+days+' days',aria:u.e[2]+', '+gp.d+' '+CGM[gp.m-1]+' '+gp.y,pick:()=>set({cm:'month',csel:u.t,gcy:gp.y,gcm:gp.m,hcy:u.hp.y,hcm:u.hp.m})}; }),
+footer:'Hijri dates use the Umm al-Qura calendar'+(calAdj?' with your '+(calAdj>0?'+':'')+calAdj+' day adjustment':'')+'. They can differ by a day from local moon sighting.'
+};
+    const CVGMF=['January','February','March','April','May','June','July','August','September','October','November','December'];
+    const CVDOW=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+    const cvAdj=S.hAdj||0;
+    const cvDir=S.cvdir||'g2h';
+    const g2h=cvDir==='g2h';
+    const cvNH=cHP(Date.UTC(2026,9,5)+cvAdj*CDAY);
+    const cIn={
+g:{d:S.cvgd!==undefined?S.cvgd:'5',m:S.cvgm||10,y:S.cvgy!==undefined?S.cvgy:'2026'},
+h:{d:S.cvhd!==undefined?S.cvhd:String(cvNH.d||22),m:S.cvhm||cvNH.m||4,y:S.cvhy!==undefined?S.cvhy:String(cvNH.y||1448)}
+};
+    const cvCur=g2h?cIn.g:cIn.h;
+    const cvKd=g2h?'cvgd':'cvhd', cvKm=g2h?'cvgm':'cvhm', cvKy=g2h?'cvgy':'cvhy';
+    const cvRes=(()=>{ const d=parseInt(cvCur.d,10), m=cvCur.m, y=parseInt(cvCur.y,10);
+      if(!Number.isFinite(d)||!Number.isFinite(y)) return {bad:true,err:'Enter a day and a year.'};
+      if(g2h){ if(y<1883||y>2174) return {bad:true,err:'Gregorian years from 1883 to 2174 are supported.'}; if(d<1||d>new Date(Date.UTC(y,m,0)).getUTCDate()) return {bad:true,err:CVGMF[m-1]+' '+y+' has '+new Date(Date.UTC(y,m,0)).getUTCDate()+' days.'};
+        const t=Date.UTC(y,m-1,d); const hp=cHP(t+cvAdj*CDAY); if(!hp.y) return {bad:true,err:'Hijri conversion is not available in this browser.'};
+        return {ok:true,main:hp.d+' '+HMF[hp.m-1]+' '+hp.y+' AH',sub:CVDOW[new Date(t).getUTCDay()]+', '+d+' '+CVGMF[m-1]+' '+y,t,next:{cvhd:String(hp.d),cvhm:hp.m,cvhy:String(hp.y)},dir:'h2g'}; }
+      if(y<1300||y>1600) return {bad:true,err:'Hijri years from 1300 to 1600 are supported.'}; if(d<1||d>30) return {bad:true,err:'Enter a day from 1 to 30.'};
+      if(!cHP(0).y) return {bad:true,err:'Hijri conversion is not available in this browser.'};
+      const t0=cHT(y,m,d); const hp=cHP(t0); if(hp.y!==y||hp.m!==m||hp.d!==d) return {bad:true,err:HMF[m-1]+' '+y+' AH has only 29 days.'};
+      const t=t0-cvAdj*CDAY; const gp=cGP(t);
+      return {ok:true,main:gp.d+' '+CVGMF[gp.m-1]+' '+gp.y,sub:CVDOW[new Date(t).getUTCDay()]+', '+d+' '+HMF[m-1]+' '+y+' AH',t,next:{cvgd:String(gp.d),cvgm:gp.m,cvgy:String(gp.y)},dir:'g2h'}; })();
+    const cvIn=(k)=>(e)=>set({[k]:String(e.target.value).replace(/[^0-9]/g,'').slice(0,5)});
+    const segCv=(on)=>`flex:1;min-width:0;min-height:44px;border-radius:22px;border:0;font-weight:600;font-size:13.5px;background:${on?'#fff':'transparent'};color:${on?'#3B1C9A':'#4A4166'};box-shadow:${on?'0 1px 6px rgba(91,46,201,.18)':'none'}`;
+    const cvOpenDay=(cvRes.ok&&!g2h)?cGP(cvRes.t):(cvRes.ok&&g2h?cGP(cvRes.t):null);
+    const cv={
+dirs:[['g2h','Gregorian to Hijri'],['h2g','Hijri to Gregorian']].map(([k,l])=>({l,on:cvDir===k,pick:()=>set({cvdir:k}),st:segCv(cvDir===k)})),
+fromLabel:g2h?'Gregorian date':'Hijri date',
+toLabel:g2h?'Hijri date':'Gregorian date',
+d:cvCur.d,
+y:cvCur.y,
+setD:cvIn(cvKd),
+setY:cvIn(cvKy),
+monthName:(g2h?CVGMF:HMF)[cvCur.m-1],
+mPrev:()=>set({[cvKm]:cvCur.m>1?cvCur.m-1:12}),
+mNext:()=>set({[cvKm]:cvCur.m<12?cvCur.m+1:1}),
+today:()=>set(g2h?{cvgd:'5',cvgm:10,cvgy:'2026'}:{cvhd:String(cvNH.d||22),cvhm:cvNH.m||4,cvhy:String(cvNH.y||1448)}),
+ok:!!cvRes.ok,
+bad:!!cvRes.bad,
+main:cvRes.main||'',
+sub:cvRes.sub||'',
+err:cvRes.err||'',
+swap:()=>{ if(cvRes.ok) set({...cvRes.next,cvdir:cvRes.dir}); },
+canOpen:!!(cvOpenDay&&cvOpenDay.y===2026&&cvOpenDay.m===10),
+open:()=>{ if(cvOpenDay) set({date:cvOpenDay.d,cm:'daily'}); },
+note:'Uses the Umm al-Qura calendar'+(cvAdj?' with your '+(cvAdj>0?'+':'')+cvAdj+' day adjustment':'')+'. Hijri dates can differ by a day from local moon sighting.'
+};
+    const QCITIES=[['khi','Karachi, Pakistan',24.8607,67.0011,'Current location'],['ruh','Riyadh, Saudi Arabia',24.7136,46.6753,''],['dxb','Dubai, UAE',25.2048,55.2708,''],['lhe','Lahore, Pakistan',31.5204,74.3587,''],['ist','Istanbul, Türkiye',41.0082,28.9784,''],['lhr','London, United Kingdom',51.5074,-0.1278,''],['nyc','New York, USA',40.7128,-74.006,''],['jkt','Jakarta, Indonesia',-6.2088,106.8456,'']];
+    const QG=S.qgeo;
+    const QGS=S.qgst||'idle';
+    const qNear=(la,lo)=>{ let best=null,bd=1e9; QCITIES.forEach((c)=>{ const dx=(c[2]-la)*111,dy=(c[3]-lo)*111*Math.cos(la*Math.PI/180); const d=Math.hypot(dx,dy); if(d<bd){bd=d;best=c;} }); return bd<60?best[1]:null; };
+    const QCUR=QG?['geo',QG.label||qNear(QG.la,QG.lo)||(QG.la.toFixed(2)+'°, '+QG.lo.toFixed(2)+'°'),QG.la,QG.lo,'']:QCITIES[0];
+    const rad=(x)=>x*Math.PI/180;
+    const la1=rad(QCUR[2]), lo1=rad(QCUR[3]), la2=rad(21.4225), lo2=rad(39.8262);
+    const y=Math.sin(lo2-lo1)*Math.cos(la2), xx=Math.cos(la1)*Math.sin(la2)-Math.sin(la1)*Math.cos(la2)*Math.cos(lo2-lo1);
+    const bear=(Math.atan2(y,xx)*180/Math.PI+360)%360;
+    const a=Math.sin((la2-la1)/2)**2+Math.cos(la1)*Math.cos(la2)*Math.sin((lo2-lo1)/2)**2;
+    const distKm=Math.round(6371*2*Math.atan2(Math.sqrt(a),Math.sqrt(1-a)));
+    const diff=((bear-S.qh+540)%360)-180;
+    const aligned=Math.abs(diff)<=3;
+    const dirs=['N','NE','E','SE','S','SW','W','NW'];
+    const dir=dirs[Math.round(bear/45)%8];
+    const qFx=()=>{ try{ if(S.qvib!==false&&navigator.vibrate) navigator.vibrate([180,80,180]); }catch(e){} try{ if(S.qsnd!==false){ const AC=window.AudioContext||window.webkitAudioContext; if(AC){ const c=(window.__qac=window.__qac||new AC()); if(c.state==='suspended') c.resume(); const t=c.currentTime; [[880,0],[1175,.16]].forEach(([f,d])=>{ const o=c.createOscillator(),g=c.createGain(); o.type='sine'; o.frequency.value=f; g.gain.setValueAtTime(.0001,t+d); g.gain.exponentialRampToValueAtTime(.25,t+d+.02); g.gain.exponentialRampToValueAtTime(.0001,t+d+.3); o.connect(g); g.connect(c.destination); o.start(t+d); o.stop(t+d+.32); }); } } }catch(e){} };
+    const stepQ=(d)=>()=>{ const nh=(S.qh+d)%360; const df=((bear-nh+540)%360)-180; const al=Math.abs(df)<=3; set({qh:nh}); if(al&&!aligned) qFx(); };
+    const QST=S.qst||1;
+    const QIM={
+1:'/_blob/85cf14e640b41b500e339894ea16e72f',
+2:'/_blob/c4015cb49621f0d51893cad0522780c1',
+3:'data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20400%20400%22%3E%3Cdefs%3E%3CradialGradient%20id%3D%22g%22%20cx%3D%2250%25%22%20cy%3D%2245%25%22%20r%3D%2260%25%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%232B2370%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23120E38%22%2F%3E%3C%2FradialGradient%3E%3C%2Fdefs%3E%3Ccircle%20cx%3D%22200%22%20cy%3D%22200%22%20r%3D%22196%22%20fill%3D%22url(%23g)%22%20stroke%3D%22%23E6B84A%22%20stroke-width%3D%224%22%2F%3E%3Ccircle%20cx%3D%22200%22%20cy%3D%22200%22%20r%3D%22176%22%20fill%3D%22none%22%20stroke%3D%22%23E6B84A%22%20stroke-opacity%3D%22.45%22%20stroke-width%3D%221.5%22%2F%3E%3Cline%20x1%3D%22200.0%22%20y1%3D%2228.0%22%20x2%3D%22200.0%22%20y2%3D%2254.0%22%20stroke%3D%22%23E6B84A%22%20stroke-opacity%3D%221%22%20stroke-width%3D%223%22%20stroke-linecap%3D%22round%22%2F%3E%3Cline%20x1%3D%22215.0%22%20y1%3D%2228.7%22%20x2%3D%22214.1%22%20y2%3D%2238.6%22%20stroke%3D%22%23E6B84A%22%20stroke-opacity%3D%220.6%22%20stroke-width%3D%221.6%22%20stroke-linecap%3D%22round%22%2F%3E%3Cline%20x1%3D%22229.9%22%20y1%3D%2230.6%22%20x2%3D%22228.1%22%20y2%3D%2240.5%22%20stroke%3D%22%23E6B84A%22%20stroke-opacity%3D%220.6%22%20stroke-width%3D%221.6%22%20stroke-linecap%3D%22round%22%2F%3E%3Cline%20x1%3D%22244.5%22%20y1%3D%2233.9%22%20x2%3D%22240.4%22%20y2%3D%2249.3%22%20stroke%3D%22%23E6B84A%22%20stroke-opacity%3D%220.6%22%20stroke-width%3D%221.6%22%20stroke-linecap%3D%22round%22%2F%3E%3Cline%20x1%3D%22258.8%22%20y1%3D%2238.4%22%20x2%3D%22255.4%22%20y2%3D%2247.8%22%20stroke%3D%22%23E6B84A%22%20stroke-opacity%3D%220.6%22%20stroke-width%3D%221.6%22%20stroke-linecap%3D%22round%22%2F%3E%3Cline%20x1%3D%22272.7%22%20y1%3D%2244.1%22%20x2%3D%22268.5%22%20y2%3D%2253.2%22%20stroke%3D%22%23E6B84A%22%20stroke-opacity%3D%220.6%22%20stroke-width%3D%221.6%22%20stroke-linecap%3D%22round%22%2F%3E%3Cline%20x1%3D%22286.0%22%20y1%3D%2251.0%22%20x2%3D%22273.0%22%20y2%3D%2273.6%22%20stroke%3D%22%23E6B84A%22%20stroke-opacity%3D%221%22%20stroke-width%3D%223%22%20stroke-linecap%3D%22round%22%2F%3E%3Cline%20x1%3D%22298.7%22%20y1%3D%2259.1%22%20x2%3D%22292.9%22%20y2%3D%2267.3%22%20stroke%3D%22%23E6B84A%22%20stroke-opacity%3D%220.6%22%20stroke-width%3D%221.6%22%20stroke-linecap%3D%22round%22%2F%3E%3Cline%20x1%3D%22310.6%22%20y1%3D%2268.2%22%20x2%3D%22304.1%22%20y2%3D%2275.9%22%20stroke%3D%22%23E6B84A%22%20stroke-opacity%3D%220.6%22%20stroke-width%3D%221.6%22%20stroke-linecap%3D%22round%22%2F%3E%3Cline%20x1%3D%22321.6%22%20y1%3D%2278.4%22%20x2%3D%22310.3%22%20y2%3D%2289.7%22%20stroke%3D%22%23E6B84A%22%20stroke-opacity%3D%220.6%22%20stroke-width%3D%221.6%22%20stroke-linecap%3D%22round%22%2F%3E%3Cline%20x1%3D%22331.8%22%20y1%3D%2289.4%22%20x2%3D%22324.1%22%20y2%3D%2295.9%22%20stroke%3D%22%23E6B84A%22%20stroke-opacity%3D%220.6%22%20stroke-width%3D%221.6%22%20stroke-linecap%3D%22round%22%2F%3E%3Cline%20x1%3D%22340.9%22%20y1%3D%22101.3%22%20x2%3D%22332.7%22%20y2%3D%22107.1%22%20stroke%3D%22%23E6B84A%22%20stroke-opacity%3D%220.6%22%20stroke-width%3D%221.6%22%20stroke-linecap%3D%22round%22%2F%3E%3Cline%20x1%3D%22349.0%22%20y1%3D%22114.0%22%20x2%3D%22326.4%22%20y2%3D%22127.0%22%20stroke%3D%22%23E6B84A%22%20stroke-opacity%3D%221%22%20stroke-width%3D%223%22%20stroke-linecap%3D%22round%22%2F%3E%3Cline%20x1%3D%22355.9%22%20y1%3D%22127.3%22%20x2%3D%22346.8%22%20y2%3D%22131.5%22%20stroke%3D%22%23E6B84A%22%20stroke-opacity%3D%220.6%22%20stroke-width%3D%221.6%22%20stroke-linecap%3D%22round%22%2F%3E%3Cline%20x1%3D%22361.6%22%20y1%3D%22141.2%22%20x2%3D%22352.2%22%20y2%3D%22144.6%22%20stroke%3D%22%23E6B84A%22%20stroke-opacity%3D%220.6%22%20stroke-width%3D%221.6%22%20stroke-linecap%3D%22round%22%2F%3E%3Cline%20x1%3D%22366.1%22%20y1%3D%22155.5%22%20x2%3D%22350.7%22%20y2%3D%22159.6%22%20stroke%3D%22%23E6B84A%22%20stroke-opacity%3D%220.6%22%20stroke-width%3D%221.6%22%20stroke-linecap%3D%22round%22%2F%3E%3Cline%20x1%3D%22369.4%22%20y1%3D%22170.1%22%20x2%3D%22359.5%22%20y2%3D%22171.9%22%20stroke%3D%22%23E6B84A%22%20stroke-opacity%3D%220.6%22%20stroke-width%3D%221.6%22%20stroke-linecap%3D%22round%22%2F%3E%3Cline%20x1%3D%22371.3%22%20y1%3D%22185.0%22%20x2%3D%22361.4%22%20y2%3D%22185.9%22%20stroke%3D%22%23E6B84A%22%20stroke-opacity%3D%220.6%22%20stroke-width%3D%221.6%22%20stroke-linecap%3D%22round%22%2F%3E%3Cline%20x1%3D%22372.0%22%20y1%3D%22200.0%22%20x2%3D%22346.0%22%20y2%3D%22200.0%22%20stroke%3D%22%23E6B84A%22%20stroke-opacity%3D%221%22%20stroke-width%3D%223%22%20stroke-linecap%3D%22round%22%2F%3E%3Cline%20x1%3D%22371.3%22%20y1%3D%22215.0%22%20x2%3D%22361.4%22%20y2%3D%22214.1%22%20stroke%3D%22%23E6B84A%22%20stroke-opacity%3D%220.6%22%20stroke-width%3D%221.6%22%20stroke-linecap%3D%22round%22%2F%3E%3Cline%20x1%3D%22369.4%22%20y1%3D%22229.9%22%20x2%3D%22359.5%22%20y2%3D%22228.1%22%20stroke%3D%22%23E6B84A%22%20stroke-opacity%3D%220.6%22%20stroke-width%3D%221.6%22%20stroke-linecap%3D%22round%22%2F%3E%3Cline%20x1%3D%22366.1%22%20y1%3D%22244.5%22%20x2%3D%22350.7%22%20y2%3D%22240.4%22%20stroke%3D%22%23E6B84A%22%20stroke-opacity%3D%220.6%22%20stroke-width%3D%221.6%22%20stroke-linecap%3D%22round%22%2F%3E%3Cline%20x1%3D%22361.6%22%20y1%3D%22258.8%22%20x2%3D%22352.2%22%20y2%3D%22255.4%22%20stroke%3D%22%23E6B84A%22%20stroke-opacity%3D%220.6%22%20stroke-width%3D%221.6%22%20stroke-linecap%3D%22round%22%2F%3E%3Cline%20x1%3D%22355.9%22%20y1%3D%22272.7%22%20x2%3D%22346.8%22%20y2%3D%22268.5%22%20stroke%3D%22%23E6B84A%22%20stroke-opacity%3D%220.6%22%20stroke-width%3D%221.6%22%20stroke-linecap%3D%22round%22%2F%3E%3Cline%20x1%3D%22349.0%22%20y1%3D%22286.0%22%20x2%3D%22326.4%22%20y2%3D%22273.0%22%20stroke%3D%22%23E6B84A%22%20stroke-opacity%3D%221%22%20stroke-width%3D%223%22%20stroke-linecap%3D%22round%22%2F%3E%3Cline%20x1%3D%22340.9%22%20y1%3D%22298.7%22%20x2%3D%22332.7%22%20y2%3D%22292.9%22%20stroke%3D%22%23E6B84A%22%20stroke-opacity%3D%220.6%22%20stroke-width%3D%221.6%22%20stroke-linecap%3D%22round%22%2F%3E%3Cline%20x1%3D%22331.8%22%20y1%3D%22310.6%22%20x2%3D%22324.1%22%20y2%3D%22304.1%22%20stroke%3D%22%23E6B84A%22%20stroke-opacity%3D%220.6%22%20stroke-width%3D%221.6%22%20stroke-linecap%3D%22round%22%2F%3E%3Cline%20x1%3D%22321.6%22%20y1%3D%22321.6%22%20x2%3D%22310.3%22%20y2%3D%22310.3%22%20stroke%3D%22%23E6B84A%22%20stroke-opacity%3D%220.6%22%20stroke-width%3D%221.6%22%20stroke-linecap%3D%22round%22%2F%3E%3Cline%20x1%3D%22310.6%22%20y1%3D%22331.8%22%20x2%3D%22304.1%22%20y2%3D%22324.1%22%20stroke%3D%22%23E6B84A%22%20stroke-opacity%3D%220.6%22%20stroke-width%3D%221.6%22%20stroke-linecap%3D%22round%22%2F%3E%3Cline%20x1%3D%22298.7%22%20y1%3D%22340.9%22%20x2%3D%22292.9%22%20y2%3D%22332.7%22%20stroke%3D%22%23E6B84A%22%20stroke-opacity%3D%220.6%22%20stroke-width%3D%221.6%22%20stroke-linecap%3D%22round%22%2F%3E%3Cline%20x1%3D%22286.0%22%20y1%3D%22349.0%22%20x2%3D%22273.0%22%20y2%3D%22326.4%22%20stroke%3D%22%23E6B84A%22%20stroke-opacity%3D%221%22%20stroke-width%3D%223%22%20stroke-linecap%3D%22round%22%2F%3E%3Cline%20x1%3D%22272.7%22%20y1%3D%22355.9%22%20x2%3D%22268.5%22%20y2%3D%22346.8%22%20stroke%3D%22%23E6B84A%22%20stroke-opacity%3D%220.6%22%20stroke-width%3D%221.6%22%20stroke-linecap%3D%22round%22%2F%3E%3Cline%20x1%3D%22258.8%22%20y1%3D%22361.6%22%20x2%3D%22255.4%22%20y2%3D%22352.2%22%20stroke%3D%22%23E6B84A%22%20stroke-opacity%3D%220.6%22%20stroke-width%3D%221.6%22%20stroke-linecap%3D%22round%22%2F%3E%3Cline%20x1%3D%22244.5%22%20y1%3D%22366.1%22%20x2%3D%22240.4%22%20y2%3D%22350.7%22%20stroke%3D%22%23E6B84A%22%20stroke-opacity%3D%220.6%22%20stroke-width%3D%221.6%22%20stroke-linecap%3D%22round%22%2F%3E%3Cline%20x1%3D%22229.9%22%20y1%3D%22369.4%22%20x2%3D%22228.1%22%20y2%3D%22359.5%22%20stroke%3D%22%23E6B84A%22%20stroke-opacity%3D%220.6%22%20stroke-width%3D%221.6%22%20stroke-linecap%3D%22round%22%2F%3E%3Cline%20x1%3D%22215.0%22%20y1%3D%22371.3%22%20x2%3D%22214.1%22%20y2%3D%22361.4%22%20stroke%3D%22%23E6B84A%22%20stroke-opacity%3D%220.6%22%20stroke-width%3D%221.6%22%20stroke-linecap%3D%22round%22%2F%3E%3Cline%20x1%3D%22200.0%22%20y1%3D%22372.0%22%20x2%3D%22200.0%22%20y2%3D%22346.0%22%20stroke%3D%22%23E6B84A%22%20stroke-opacity%3D%221%22%20stroke-width%3D%223%22%20stroke-linecap%3D%22round%22%2F%3E%3Cline%20x1%3D%22185.0%22%20y1%3D%22371.3%22%20x2%3D%22185.9%22%20y2%3D%22361.4%22%20stroke%3D%22%23E6B84A%22%20stroke-opacity%3D%220.6%22%20stroke-width%3D%221.6%22%20stroke-linecap%3D%22round%22%2F%3E%3Cline%20x1%3D%22170.1%22%20y1%3D%22369.4%22%20x2%3D%22171.9%22%20y2%3D%22359.5%22%20stroke%3D%22%23E6B84A%22%20stroke-opacity%3D%220.6%22%20stroke-width%3D%221.6%22%20stroke-linecap%3D%22round%22%2F%3E%3Cline%20x1%3D%22155.5%22%20y1%3D%22366.1%22%20x2%3D%22159.6%22%20y2%3D%22350.7%22%20stroke%3D%22%23E6B84A%22%20stroke-opacity%3D%220.6%22%20stroke-width%3D%221.6%22%20stroke-linecap%3D%22round%22%2F%3E%3Cline%20x1%3D%22141.2%22%20y1%3D%22361.6%22%20x2%3D%22144.6%22%20y2%3D%22352.2%22%20stroke%3D%22%23E6B84A%22%20stroke-opacity%3D%220.6%22%20stroke-width%3D%221.6%22%20stroke-linecap%3D%22round%22%2F%3E%3Cline%20x1%3D%22127.3%22%20y1%3D%22355.9%22%20x2%3D%22131.5%22%20y2%3D%22346.8%22%20stroke%3D%22%23E6B84A%22%20stroke-opacity%3D%220.6%22%20stroke-width%3D%221.6%22%20stroke-linecap%3D%22round%22%2F%3E%3Cline%20x1%3D%22114.0%22%20y1%3D%22349.0%22%20x2%3D%22127.0%22%20y2%3D%22326.4%22%20stroke%3D%22%23E6B84A%22%20stroke-opacity%3D%221%22%20stroke-width%3D%223%22%20stroke-linecap%3D%22round%22%2F%3E%3Cline%20x1%3D%22101.3%22%20y1%3D%22340.9%22%20x2%3D%22107.1%22%20y2%3D%22332.7%22%20stroke%3D%22%23E6B84A%22%20stroke-opacity%3D%220.6%22%20stroke-width%3D%221.6%22%20stroke-linecap%3D%22round%22%2F%3E%3Cline%20x1%3D%2289.4%22%20y1%3D%22331.8%22%20x2%3D%2295.9%22%20y2%3D%22324.1%22%20stroke%3D%22%23E6B84A%22%20stroke-opacity%3D%220.6%22%20stroke-width%3D%221.6%22%20stroke-linecap%3D%22round%22%2F%3E%3Cline%20x1%3D%2278.4%22%20y1%3D%22321.6%22%20x2%3D%2289.7%22%20y2%3D%22310.3%22%20stroke%3D%22%23E6B84A%22%20stroke-opacity%3D%220.6%22%20stroke-width%3D%221.6%22%20stroke-linecap%3D%22round%22%2F%3E%3Cline%20x1%3D%2268.2%22%20y1%3D%22310.6%22%20x2%3D%2275.9%22%20y2%3D%22304.1%22%20stroke%3D%22%23E6B84A%22%20stroke-opacity%3D%220.6%22%20stroke-width%3D%221.6%22%20stroke-linecap%3D%22round%22%2F%3E%3Cline%20x1%3D%2259.1%22%20y1%3D%22298.7%22%20x2%3D%2267.3%22%20y2%3D%22292.9%22%20stroke%3D%22%23E6B84A%22%20stroke-opacity%3D%220.6%22%20stroke-width%3D%221.6%22%20stroke-linecap%3D%22round%22%2F%3E%3Cline%20x1%3D%2251.0%22%20y1%3D%22286.0%22%20x2%3D%2273.6%22%20y2%3D%22273.0%22%20stroke%3D%22%23E6B84A%22%20stroke-opacity%3D%221%22%20stroke-width%3D%223%22%20stroke-linecap%3D%22round%22%2F%3E%3Cline%20x1%3D%2244.1%22%20y1%3D%22272.7%22%20x2%3D%2253.2%22%20y2%3D%22268.5%22%20stroke%3D%22%23E6B84A%22%20stroke-opacity%3D%220.6%22%20stroke-width%3D%221.6%22%20stroke-linecap%3D%22round%22%2F%3E%3Cline%20x1%3D%2238.4%22%20y1%3D%22258.8%22%20x2%3D%2247.8%22%20y2%3D%22255.4%22%20stroke%3D%22%23E6B84A%22%20stroke-opacity%3D%220.6%22%20stroke-width%3D%221.6%22%20stroke-linecap%3D%22round%22%2F%3E%3Cline%20x1%3D%2233.9%22%20y1%3D%22244.5%22%20x2%3D%2249.3%22%20y2%3D%22240.4%22%20stroke%3D%22%23E6B84A%22%20stroke-opacity%3D%220.6%22%20stroke-width%3D%221.6%22%20stroke-linecap%3D%22round%22%2F%3E%3Cline%20x1%3D%2230.6%22%20y1%3D%22229.9%22%20x2%3D%2240.5%22%20y2%3D%22228.1%22%20stroke%3D%22%23E6B84A%22%20stroke-opacity%3D%220.6%22%20stroke-width%3D%221.6%22%20stroke-linecap%3D%22round%22%2F%3E%3Cline%20x1%3D%2228.7%22%20y1%3D%22215.0%22%20x2%3D%2238.6%22%20y2%3D%22214.1%22%20stroke%3D%22%23E6B84A%22%20stroke-opacity%3D%220.6%22%20stroke-width%3D%221.6%22%20stroke-linecap%3D%22round%22%2F%3E%3Cline%20x1%3D%2228.0%22%20y1%3D%22200.0%22%20x2%3D%2254.0%22%20y2%3D%22200.0%22%20stroke%3D%22%23E6B84A%22%20stroke-opacity%3D%221%22%20stroke-width%3D%223%22%20stroke-linecap%3D%22round%22%2F%3E%3Cline%20x1%3D%2228.7%22%20y1%3D%22185.0%22%20x2%3D%2238.6%22%20y2%3D%22185.9%22%20stroke%3D%22%23E6B84A%22%20stroke-opacity%3D%220.6%22%20stroke-width%3D%221.6%22%20stroke-linecap%3D%22round%22%2F%3E%3Cline%20x1%3D%2230.6%22%20y1%3D%22170.1%22%20x2%3D%2240.5%22%20y2%3D%22171.9%22%20stroke%3D%22%23E6B84A%22%20stroke-opacity%3D%220.6%22%20stroke-width%3D%221.6%22%20stroke-linecap%3D%22round%22%2F%3E%3Cline%20x1%3D%2233.9%22%20y1%3D%22155.5%22%20x2%3D%2249.3%22%20y2%3D%22159.6%22%20stroke%3D%22%23E6B84A%22%20stroke-opacity%3D%220.6%22%20stroke-width%3D%221.6%22%20stroke-linecap%3D%22round%22%2F%3E%3Cline%20x1%3D%2238.4%22%20y1%3D%22141.2%22%20x2%3D%2247.8%22%20y2%3D%22144.6%22%20stroke%3D%22%23E6B84A%22%20stroke-opacity%3D%220.6%22%20stroke-width%3D%221.6%22%20stroke-linecap%3D%22round%22%2F%3E%3Cline%20x1%3D%2244.1%22%20y1%3D%22127.3%22%20x2%3D%2253.2%22%20y2%3D%22131.5%22%20stroke%3D%22%23E6B84A%22%20stroke-opacity%3D%220.6%22%20stroke-width%3D%221.6%22%20stroke-linecap%3D%22round%22%2F%3E%3Cline%20x1%3D%2251.0%22%20y1%3D%22114.0%22%20x2%3D%2273.6%22%20y2%3D%22127.0%22%20stroke%3D%22%23E6B84A%22%20stroke-opacity%3D%221%22%20stroke-width%3D%223%22%20stroke-linecap%3D%22round%22%2F%3E%3Cline%20x1%3D%2259.1%22%20y1%3D%22101.3%22%20x2%3D%2267.3%22%20y2%3D%22107.1%22%20stroke%3D%22%23E6B84A%22%20stroke-opacity%3D%220.6%22%20stroke-width%3D%221.6%22%20stroke-linecap%3D%22round%22%2F%3E%3Cline%20x1%3D%2268.2%22%20y1%3D%2289.4%22%20x2%3D%2275.9%22%20y2%3D%2295.9%22%20stroke%3D%22%23E6B84A%22%20stroke-opacity%3D%220.6%22%20stroke-width%3D%221.6%22%20stroke-linecap%3D%22round%22%2F%3E%3Cline%20x1%3D%2278.4%22%20y1%3D%2278.4%22%20x2%3D%2289.7%22%20y2%3D%2289.7%22%20stroke%3D%22%23E6B84A%22%20stroke-opacity%3D%220.6%22%20stroke-width%3D%221.6%22%20stroke-linecap%3D%22round%22%2F%3E%3Cline%20x1%3D%2289.4%22%20y1%3D%2268.2%22%20x2%3D%2295.9%22%20y2%3D%2275.9%22%20stroke%3D%22%23E6B84A%22%20stroke-opacity%3D%220.6%22%20stroke-width%3D%221.6%22%20stroke-linecap%3D%22round%22%2F%3E%3Cline%20x1%3D%22101.3%22%20y1%3D%2259.1%22%20x2%3D%22107.1%22%20y2%3D%2267.3%22%20stroke%3D%22%23E6B84A%22%20stroke-opacity%3D%220.6%22%20stroke-width%3D%221.6%22%20stroke-linecap%3D%22round%22%2F%3E%3Cline%20x1%3D%22114.0%22%20y1%3D%2251.0%22%20x2%3D%22127.0%22%20y2%3D%2273.6%22%20stroke%3D%22%23E6B84A%22%20stroke-opacity%3D%221%22%20stroke-width%3D%223%22%20stroke-linecap%3D%22round%22%2F%3E%3Cline%20x1%3D%22127.3%22%20y1%3D%2244.1%22%20x2%3D%22131.5%22%20y2%3D%2253.2%22%20stroke%3D%22%23E6B84A%22%20stroke-opacity%3D%220.6%22%20stroke-width%3D%221.6%22%20stroke-linecap%3D%22round%22%2F%3E%3Cline%20x1%3D%22141.2%22%20y1%3D%2238.4%22%20x2%3D%22144.6%22%20y2%3D%2247.8%22%20stroke%3D%22%23E6B84A%22%20stroke-opacity%3D%220.6%22%20stroke-width%3D%221.6%22%20stroke-linecap%3D%22round%22%2F%3E%3Cline%20x1%3D%22155.5%22%20y1%3D%2233.9%22%20x2%3D%22159.6%22%20y2%3D%2249.3%22%20stroke%3D%22%23E6B84A%22%20stroke-opacity%3D%220.6%22%20stroke-width%3D%221.6%22%20stroke-linecap%3D%22round%22%2F%3E%3Cline%20x1%3D%22170.1%22%20y1%3D%2230.6%22%20x2%3D%22171.9%22%20y2%3D%2240.5%22%20stroke%3D%22%23E6B84A%22%20stroke-opacity%3D%220.6%22%20stroke-width%3D%221.6%22%20stroke-linecap%3D%22round%22%2F%3E%3Cline%20x1%3D%22185.0%22%20y1%3D%2228.7%22%20x2%3D%22185.9%22%20y2%3D%2238.6%22%20stroke%3D%22%23E6B84A%22%20stroke-opacity%3D%220.6%22%20stroke-width%3D%221.6%22%20stroke-linecap%3D%22round%22%2F%3E%3Ccircle%20cx%3D%22200%22%20cy%3D%22200%22%20r%3D%22128%22%20fill%3D%22none%22%20stroke%3D%22%236A5BD6%22%20stroke-width%3D%222%22%2F%3E%3Ccircle%20cx%3D%22200%22%20cy%3D%22200%22%20r%3D%2296%22%20fill%3D%22none%22%20stroke%3D%22%23E6B84A%22%20stroke-opacity%3D%22.5%22%20stroke-width%3D%221.5%22%20stroke-dasharray%3D%223%207%22%2F%3E%3Cg%20fill%3D%22none%22%20stroke%3D%22%23E6B84A%22%20stroke-width%3D%223%22%3E%3Crect%20x%3D%22136%22%20y%3D%22136%22%20width%3D%22128%22%20height%3D%22128%22%20rx%3D%226%22%2F%3E%3Crect%20x%3D%22136%22%20y%3D%22136%22%20width%3D%22128%22%20height%3D%22128%22%20rx%3D%226%22%20transform%3D%22rotate(45%20200%20200)%22%2F%3E%3C%2Fg%3E%3Cg%20fill%3D%22%236A5BD6%22%20fill-opacity%3D%22.35%22%20stroke%3D%22%23E6B84A%22%20stroke-width%3D%221.5%22%3E%3Ccircle%20cx%3D%22200%22%20cy%3D%22200%22%20r%3D%2236%22%2F%3E%3C%2Fg%3E%3Ccircle%20cx%3D%22200%22%20cy%3D%22200%22%20r%3D%229%22%20fill%3D%22%23E6B84A%22%2F%3E%3Cpolygon%20points%3D%22200%2C30%20176%2C106%20224%2C106%22%20fill%3D%22%23F5C542%22%20stroke%3D%22%23FFF3C4%22%20stroke-width%3D%222%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpolygon%20points%3D%22200%2C30%20200%2C106%20224%2C106%22%20fill%3D%22%23D9A21B%22%2F%3E%3C%2Fsvg%3E'
+};
+    const QNM={
+1:'World map dial',
+2:'Calligraphy dial',
+3:'Midnight star dial'
+};
+    const QTH=S.qth||'light';
+    const QDK=QTH==='dark';
+    const QCOL={
+purple:['Purple','#5B2EC9','#43288A',0],
+green:['Green','#2E8B57','#1F6B3F',-116],
+teal:['Teal','#0E8F8F','#0A6B6B',-82],
+blue:['Blue','#2F6FDB','#1F4FA8',-45],
+gold:['Gold','#C58A00','#8F6400',141],
+rose:['Rose','#C4375B','#962A45',83]
+};
+    const QC=QCOL[S.qcol]||QCOL.purple;
+    const QFIL=QC[3]?`hue-rotate(${QC[3]}deg)`:'none';
+    const QLOW=S.qlow===true;
+    const MQD=(d)=>S.mqu==='mi'?(d*0.621371).toFixed(1)+' mi':d.toFixed(1)+' Km';
+    const MQRL=(k)=>S.mqu==='mi'?Math.round(k*0.621371)+' mi':k+' km';
+    const MQ=[['Tooba Masjid',4.0,'4.5',"Large prayer hall · Women's section · Parking",'1:15 PM',9,19,'/_blob/45c6d7a568f74f70077aba4413e8db56'],['Hanfia Masjid',5.5,'4.5','Wudhu area · Wheelchair access · Quran classes','1:30 PM',12,26,'/_blob/db930a98e471316aba14a7491c47ea24'],['Omar Masjid',6.0,'4.5','Friday sermon in English and Urdu · Parking','1:00 PM',14,30,'/_blob/cd7bba0fe147880d9c0dc8ac231e717e'],['Masjid Omer',6.5,'4.5','Open between prayers · Library · Ablution rooms','1:20 PM',15,33,'/_blob/7f005c96f7ad20b2bc7b678898863a63']];
+    const MQAR=['DHA Phase 2','Gulshan-e-Iqbal','Clifton','North Nazimabad'];
+    const MQFC=[['w',"Women's section",/women/i],['p','Parking',/parking/i],['h','Wheelchair access',/wheelchair/i],['u','Wudhu area',/wudhu|ablution/i],['q','Quran classes',/quran classes/i]];
+    const mqq=(S.mqq||'').trim().toLowerCase();
+    const mqar=S.mqar||'all';
+    const mqfs=(S.mqfc&&typeof S.mqfc==='object')?S.mqfc:{};
+    const mqjm=!!S.mqjm;
+    const mqMin=(t)=>{ const m=/(\d+):(\d+)\s*(AM|PM)/i.exec(t||''); return m?((+m[1])%12+(/pm/i.test(m[3])?12:0))*60+(+m[2]):0; };
+    const MQV=MQ.map((m,i)=>({i,n:m[0],d:m[1],r:m[2],desc:m[3],jum:m[4],drive:m[5],walk:m[6],img:m[7],area:MQAR[i]})).filter((m)=>!mqq||(m.n+' '+m.area+' '+m.desc+' karachi').toLowerCase().includes(mqq)).filter((m)=>m.d<=(S.mqr||10)).filter((m)=>mqar==='all'||m.area===mqar).filter((m)=>MQFC.every(([k,l,re])=>!mqfs[k]||re.test(m.desc))).sort((a,b)=>mqjm?(mqMin(a.jum)-mqMin(b.jum)||a.d-b.d):(S.mqs==='name'?a.n.localeCompare(b.n):a.d-b.d));
+    const MQS=MQ[S.mq||0];
+    const mqMode=S.mqm||'drive';
+    const MQVIEW=S.mqv||'list', MQRAD=S.mqr||10, MQR=112;
+    const MQANG=[40,150,250,310];
+    const MQIN=MQ.map((m,i)=>({i,n:m[0],d:m[1],r:m[2],img:m[7],ang:MQANG[i]})).filter((m)=>m.d<=MQRAD&&(!mqq||(m.n+' '+MQAR[m.i]+' '+MQ[m.i][3]+' karachi').toLowerCase().includes(mqq)));
+    const MQSEL=MQIN.find((m)=>m.i===S.mqp)||MQIN[0]||null;
+    const MQCH=(on)=>`flex:1;min-height:44px;border-radius:22px;border:1.5px solid ${on?'#5B2EC9':'#D6CDEA'};background:${on?'#5B2EC9':'#fff'};color:${on?'#fff':'#4A22AB'};font-weight:600`;
+    const MQG=(t,d,key,cur,opts)=>({t,d,chips:opts.map(([v,l])=>({l,on:cur===v,pick:()=>set(key==='ttgt'?{ttgt:v,ttgtRaw:''}:{[key]:v}),st:MQCH(cur===v)}))});
+    const mq={
+setOpen:!!S.mqset,
+openSet:()=>set({mqset:true}),
+closeSet:()=>set({mqset:false}),
+groups:[MQG('Distance unit','Used for distances and the radius','mqu',S.mqu||'km',[['km','Kilometres'],['mi','Miles']]),MQG('Default view','How the Mosque screen opens','mqv',S.mqv||'list',[['list','List'],['map','Map']]),MQG('Default radius','How far to look for mosques','mqr',S.mqr||10,[[2,MQRL(2)],[5,MQRL(5)],[10,MQRL(10)]]),MQG('Sort list by','Order of the mosque list','mqs',S.mqs||'distance',[['distance','Distance'],['name','Name A to Z']]),MQG('Default travel mode','Used when you tap Get Directions','mqmd',S.mqmd||'drive',[['drive','Drive'],['walk','Walk']])],
+reset:()=>{ set({mqu:'km',mqv:'list',mqr:10,mqs:'distance',mqmd:'drive'}); this.toast('Mosque settings reset'); },
+q:S.mqq||'',
+setQ:(e)=>set({mqq:e.target.value}),
+locate:()=>{ set({mqloc:true}); this.qDetect(); this.toast('Finding your location…'); },
+near:S.qgeo?('Near '+(S.qgeo.label||'your location')):(S.mqloc?'Near your location':'Near Karachi'),
+title:((S.mqs==='name'||mqjm)?'':'Nearest ')+(MQV.length===1?'Mosque':'Mosques'),
+clear:()=>set({mqq:'',mqdf:0,mqar:'all',mqfc:{},mqjm:false}),
+count:MQV.length,
+empty:MQV.length===0,
+rows:MQV.map((m)=>({cardSt:(MQSEL&&MQSEL.i===m.i)?'border:2px solid #5B2EC9':'border:1px solid #E3D9F7',pickCard:()=>set({mqp:m.i}),name:m.n,area:m.area,t1:(m.desc.split(' · ')[0]||''),t2:(m.desc.split(' · ')[1]||''),t3:(m.desc.split(' · ')[2]||''),t1St:m.desc.split(' · ')[0]?'display:inline-block;background:#F3EEFD;color:#5A4E80;border-radius:100px;padding:3px 9px;font-size:11.5px;font-weight:600':'display:none',t2St:m.desc.split(' · ')[1]?'display:inline-block;background:#F3EEFD;color:#5A4E80;border-radius:100px;padding:3px 9px;font-size:11.5px;font-weight:600':'display:none',t3St:m.desc.split(' · ')[2]?'display:inline-block;background:#F3EEFD;color:#5A4E80;border-radius:100px;padding:3px 9px;font-size:11.5px;font-weight:600':'display:none',jumTxt:mqjm?('Jumu\'ah '+m.jum):'',jumSt:mqjm?'display:inline-block;margin-top:8px;background:#FFF3CC;color:#8A5B00;border-radius:100px;padding:3px 10px;font-size:12.5px;font-weight:800':'display:none',dist:MQD(m.d),rate:m.r,desc:m.desc,img:m.img,aria:'Open directions to '+m.n,go:()=>set({screen:'mosqueMap',mq:m.i,mqm:S.mqmd||'drive',from:[...S.from,S.screen],sheet:null})})),
+sel:{name:MQS[0],dist:MQD(MQS[1]),rate:MQS[2],jum:MQS[4],area:MQAR[S.mq||0]},
+modes:[['drive','Drive',MQS[5]+' min','M5 17H3a1 1 0 0 1-1-1v-3a3.7 3.7 0 0 1 .3-1.4l1.3-2.9A2 2 0 0 1 5.4 7.5h6.5c.7 0 1.3.3 1.8.7L16 10.5s2.7.6 4.5 1.1c.8.2 1.5 1 1.5 1.9V16a1 1 0 0 1-1 1h-2M7 17h8M5 17a2 2 0 1 0 4 0 2 2 0 0 0-4 0M15 17a2 2 0 1 0 4 0 2 2 0 0 0-4 0'],['walk','Walk',MQS[6]+' min','M13.5 4.5a1.6 1.6 0 1 1-3.2 0 1.6 1.6 0 0 1 3.2 0zM10.3 8.5l-2.3 4 3.2 2.2V21M11.2 14.7l3.1 2 .9 4.3M10.3 8.5l3.7 1 2 3']].map(([k,t,sub,ic])=>({t,sub,ic,on:mqMode===k,pick:()=>set({mqm:k}),st:`flex:1;min-height:84px;padding:12px 14px;border-radius:18px;display:flex;flex-direction:column;align-items:flex-start;justify-content:space-between;gap:6px;text-align:left;border:1.5px solid ${mqMode===k?'transparent':'#E3D9F7'};background:${mqMode===k?'linear-gradient(135deg,#5B2EC9,#43288A)':'#fff'};color:${mqMode===k?'#fff':'#43288A'};box-shadow:${mqMode===k?'0 6px 14px rgba(67,40,138,.28)':'none'}`})),
+radii:[2,5,10].map((k)=>({l:MQRL(k),on:MQRAD===k,pick:()=>set({mqr:k,mqp:null}),st:`flex:none;min-height:40px;padding:0 16px;border-radius:20px;border:1.5px solid ${MQRAD===k?'#5B2EC9':'#D6CDEA'};background:${MQRAD===k?'#5B2EC9':'#fff'};color:${MQRAD===k?'#fff':'#4A22AB'};font-weight:600`})),
+ringSt:`position:absolute;left:50%;top:50%;width:${MQR*2}px;height:${MQR*2}px;margin:${-MQR}px 0 0 ${-MQR}px;border-radius:50%;border:2px dashed #7C4DDC;background:rgba(124,77,220,.10)`,
+youSt:'position:absolute;left:50%;top:50%;width:16px;height:16px;margin:-8px 0 0 -8px',
+pins:MQIN.map((m)=>{ const on=MQSEL&&MQSEL.i===m.i; const ang=m.ang*Math.PI/180; const px=m.d/MQRAD*MQR*Math.sin(ang), py=-m.d/MQRAD*MQR*Math.cos(ang); const sz=on?44:34; return {sz,aria:m.n+', '+MQD(m.d),fill:on?'#5B2EC9':'#8254DC',pick:()=>set({mqp:m.i}),st:`position:absolute;left:50%;top:50%;width:44px;height:50px;margin:0;padding:0;border:0;background:transparent;display:flex;align-items:flex-end;justify-content:center;transform:translate(calc(-50% + ${px.toFixed(1)}px),calc(-100% + ${py.toFixed(1)}px));z-index:${on?3:2}`}; }),
+share:()=>this.toast('Link to '+MQS[0]+' copied'),
+start:()=>this.toast('Navigation to '+MQS[0]+' opens in Maps')
+};
+    const qb={
+rootCls:QDK?'qdk':'',
+bg:QDK?'#14102E':(QTH==='white'?'#FFFFFF':'#F9F7FD'),
+ftBg:QDK?'#1B1540':'#fff',
+ftBd:QDK?'#2E2762':'#EEE9F7',
+accD:QC[2],
+acc:QC[1],
+fil:QFIL,
+dialWrap:`position:relative;width:264px;height:264px;margin:8px auto 4px;border-radius:50%;${QDK?'background:rgba(255,255,255,.94);box-shadow:0 0 0 6px rgba(255,255,255,.08)':''}`,
+themes:[['light','Light'],['dark','Dark'],['white','White']].map(([k,l])=>({l,on:QTH===k,pick:()=>set({qth:k}),st:`flex:1;min-height:44px;border-radius:22px;border:1.5px solid ${QTH===k?QC[1]:'#D6CDEA'};background:${QTH===k?QC[1]:'#fff'};color:${QTH===k?'#fff':'#4A22AB'};font-weight:600`})),
+colors:Object.keys(QCOL).map((k)=>({l:QCOL[k][0],on:(S.qcol||'purple')===k,pick:()=>set({qcol:k}),st:`flex:1;min-width:44px;min-height:44px;border-radius:22px;border:${(S.qcol||'purple')===k?'3px solid #241A4A':'2px solid transparent'};background:${QCOL[k][1]};display:flex;align-items:center;justify-content:center;padding:0`})),
+from:QG?QCUR[1]:(QGS==='busy'||QGS==='idle'?'Detecting your location…':'Karachi, Pakistan (default)'),
+refresh:()=>this.qDetect(),
+refSt:QGS==='busy'?'animation:qspin .9s linear infinite':'',
+refAria:QGS==='busy'?'Detecting location':'Refresh location',
+locNote:QGS==='denied'?'Location access is off. Turn it on in your browser or phone settings, then tap refresh.':(QGS==='err'?'Could not detect your location. Showing Karachi. Tap refresh to try again.':''),
+locNoteOn:(QGS==='denied'||QGS==='err'),
+closeLoc:()=>set({qloc:false}),
+locOpen:!!S.qloc,
+cities:QCITIES.map((c)=>({n:c[1].split(',')[0],sub:c[4]||c[1].split(', ')[1],on:c[0]===QCUR[0],pick:()=>{ set({qcity:c[0],qloc:false}); this.toast('Qibla updated for '+c[1].split(',')[0]); }})),
+toNamaz:go('namaz'),
+nxName:nxName,
+nxTime:fm(nx.t),
+nxCd:cd,
+accTxt:QLOW?'Low':'Good',
+accDot:QLOW?'#E0A100':'#2E8B57',
+accBg:QLOW?'#FFF6DB':'#EAF7EF',
+accBd:QLOW?'#F0D58A':'#BFE3CC',
+tipOpen:QLOW||S.qtip===true,
+tipTog:()=>set({qtip:!(QLOW||S.qtip===true)}),
+tipChev:`transform:rotate(${(QLOW||S.qtip===true)?180:0}deg)`,
+tipTitle:QLOW?'Calibrate your compass':'Tips for an accurate reading',
+img:QIM[QST],
+imgSt:`display:block;width:264px;height:264px;object-fit:contain;filter:${QFIL};transition:transform .4s ease;transform:rotate(${Math.round(bear-S.qh)}deg)`,
+tiles:[1,2,3].map((k)=>({img:QIM[k],on:QST===k,aria:QNM[k]+(QST===k?' (selected)':''),pick:()=>set({qst:k}),st:`width:64px;height:64px;border-radius:14px;border:${QST===k?'0':'1px solid #E3D9F7'};background:${QST===k?QC[2]:'#fff'};display:flex;align-items:center;justify-content:center;padding:0;box-shadow:${QST===k?'0 6px 14px rgba(0,0,0,.28)':'none'}`})),
+bearing:Math.round(bear),
+dir,
+dist:distKm.toLocaleString('en-US'),
+bdSt:`transform-box:fill-box;transform-origin:center;transform:rotate(${-Math.round(bear-S.qh)}deg);transition:transform .4s ease`,
+isAl:aligned&&QST===1,
+isAl2:aligned&&QST===2,
+isAl3:aligned&&QST===3,
+qs1:QST===1,
+qs2:QST===2,
+qs3:QST===3,
+ptSt:`position:absolute;left:0;top:0;width:264px;height:264px;pointer-events:none;transform:rotate(${Math.round(bear-S.qh)}deg);transition:transform .4s ease`,
+msg:aligned?'✓ You got it!':`Turn ${diff>0?'right':'left'} about ${Math.abs(Math.round(diff))}°`,
+msgSt:`font-size:${aligned?24:18}px;font-weight:800;color:${aligned?(QDK?'#8EE0B0':'#1F6B3F'):(QDK?'#FFFFFF':'#2A1B5E')}`,
+left:stepQ(345),
+right:stepQ(15),
+shakeSt:aligned?'border-radius:50%;animation:qshake .55s ease-in-out 1,qring .9s ease-out 1':'',
+setOpen:!!S.qset,
+openSet:()=>set({qset:true}),
+closeSet:()=>set({qset:false}),
+tryFx:()=>{ qFx(); set({qtry:Date.now()}); },
+opts:[['qvib','Vibrate','Short vibration when you face the Qibla'],['qsnd','Play sound','A soft chime when you face the Qibla']].map(([k,t,d])=>{ const on=S[k]!==false; return {t,d,on,tog:()=>set({[k]:!on}),st:`flex:none;width:52px;height:32px;border-radius:16px;border:0;padding:3px;background:${on?QC[1]:'#CFC6E6'};display:flex;align-items:center;justify-content:${on?'flex-end':'flex-start'}`,knob:'width:26px;height:26px;border-radius:13px;background:#fff;box-shadow:0 1px 4px rgba(0,0,0,.3)'}; }).concat([(()=>{ const on=QLOW; return {t:'Simulate weak compass signal',d:'Prototype only: shows the low-accuracy warning',on,tog:()=>set({qlow:!on}),st:`flex:none;width:52px;height:32px;border-radius:16px;border:0;padding:3px;background:${on?QC[1]:'#CFC6E6'};display:flex;align-items:center;justify-content:${on?'flex-end':'flex-start'}`,knob:'width:26px;height:26px;border-radius:13px;background:#fff;box-shadow:0 1px 4px rgba(0,0,0,.3)'}; })()])
+};
+    const sg={
+items:[
+      ['Location permission denied','Prayer times need your location. Choose a city instead, or allow location access.','Choose a city · Open device settings','#C4375B'],
+      ['Location unavailable','We could not find your location. Check that location services are on, or choose a city.','Try again · Choose a city','#C4375B'],
+      ['No internet, cached times available','Showing times calculated earlier. They will refresh when you reconnect.','Shows a "Cached times" banner','#B7791F'],
+      ['No internet, no cached times','Prayer times for this date have not been saved yet. Connect once to download them.','Retry','#C4375B'],
+      ['Calculation unavailable','We could not calculate times for this date and place. Please try again, or pick another method.','Retry · Change method','#C4375B'],
+      ['Unsupported high-latitude setup','At this latitude and date the twilight does not end. Pick a high-latitude rule to continue.','Open settings','#B7791F'],
+      ['Notifications denied','Reminders are saved, but alerts are blocked on this device.','Open device settings','#B7791F'],
+      ['Time zone changed','Your device time zone changed. Update prayer times for the new zone?','Update times · Keep saved city','#B7791F'],
+      ['Invalid manual adjustment','Corrections are limited to 30 minutes either way.','Fix value','#C4375B'],
+      ['Calculation method updated','Your times were recalculated and reminders rescheduled.','Dismiss','#2E8B57']
+    ].map(([t,m,cta,c])=>({t,m,cta,dot:`width:12px;height:12px;border-radius:6px;background:${c};flex:none`}))
+};
+    const s={
+
+};
+    ['home','namaz','all','detail','calendar','timeline','reminders','settings','qibla','states','qhome','qbrowse','qjump','reader','qlisten','qplayer','qsearch','qmem','qjourney','qstate','qdetail','qpractice','qqaida','qletter','qtutor','qmprog','qreciter','hdua','vplay','reels','hhome','hbook','hread','hfwd','dhome','dcat','dread','dfav','dcount','dsearch','dreel','dfread','dask','slist','sdetail','sread','slisten','vlist','vwl','ilm','vseries','vdetail','ssaved','ftcust','scats','scat','shub','mosque','mosqueMap','tasbih','tcount','tfav','tbg','wudhu','wintro','wsteps','wnull','wsocks','wtay','wdua','wfard','wmist','wsun','salah','salsteps','salfive','salsay','salcond','salmist','saljum','salpray','islwel','islund','islrec','islcong','islres','islpg','isljd','isljc','isljl','isljp','isljs','isljai','isljh','islhub','islpgr','islpray','isld1','isld2','isld3','isld4','isld5'].forEach((k)=>s[k]=S.screen===k);
+    const x={
+back,
+openProto:()=>set({sheet:'proto'}),
+goCalendar:go('calendar'),
+goSettings:go('settings'),
+goQibla:go('qibla'),
+goReminders:go('reminders'),
+goTimeline:go('timeline'),
+goAll:go('all'),
+toastLoc:()=>this.toast('Opens device settings'),
+toastGuide:()=>this.toast('Prayer guide opens here')
+};
+    return { s, x, n, al, dt, cl, cv, qb, mq, sg };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,3 @@
+The *.dc.html files in this folder are EARLIER working copies. They do not contain the later changes
+(footer Edit control, membership state wiring, memorial repository). The authoritative recovered app
+is app/recovery/wasil-recovery.html (self-contained page, published at the recovery artifact link).
